@@ -1,3 +1,6 @@
+# Default to auto-normalized line endings
+*                       text=auto eol=lf
+
 # Unity files
 *.anim                  text eol=lf
 *.asmdef                text eol=lf
