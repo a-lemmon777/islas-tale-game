@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class MoveRight : MonoBehaviour
+public class ShrimpMover : MonoBehaviour
 {
-    [Tooltip("Speed in units per second")]
-    public float Speed;
+    [Tooltip("Destination position to move to")]
+    public Transform Destination;
 
     /// <summary>
-    /// Rigidbody without gravity
+    /// Moving speed in units per second
     /// </summary>
+    public float Speed = 1;
+
     private Rigidbody2D _rigidbody2D;
 
     // Start is called before the first frame update
@@ -23,8 +25,11 @@ public class MoveRight : MonoBehaviour
     void Update()
     {
         this._rigidbody2D.MovePosition(
-            this._rigidbody2D.position
-            + Vector2.right * this.Speed * Time.deltaTime
+            Vector3.MoveTowards(
+                this._rigidbody2D.position,
+                this.Destination.position,
+                this.Speed * Time.deltaTime
+            )
         );
     }
 }
