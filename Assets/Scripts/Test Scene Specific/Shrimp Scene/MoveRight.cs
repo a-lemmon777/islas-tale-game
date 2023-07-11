@@ -23,7 +23,7 @@ public class MoveRight : MonoBehaviour
     void Update()
     {
         this._rigidbody2D.MovePosition(
-            (Vector2)this.transform.position
+            this._rigidbody2D.position
             + Vector2.right * this.Speed * Time.deltaTime
         );
     }
