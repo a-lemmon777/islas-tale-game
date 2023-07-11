@@ -40,7 +40,7 @@ public class ShrimpMover : MonoBehaviour
         }
 
         _rigidbody2D.velocity =
-            ((Vector2)Destination.position - _rigidbody2D.position) * Speed
+            ((Vector2)Destination.position - _rigidbody2D.position).normalized * Speed
         ;
     }
 }
