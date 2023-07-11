@@ -28,14 +28,19 @@ public class ShrimpMover : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        this._rigidbody2D.MovePosition(
-            Vector3.MoveTowards(
-                _rigidbody2D.position,
-                Destination.position,
-                Speed * Time.deltaTime
-            )
-        );
+        var distanceLeft = Vector2.Distance(Destination.position, _rigidbody2D.position);
+
+        // the shrimp arrived
+        if (distanceLeft <= 1)
+        {
+            _rigidbody2D.velocity = Vector2.zero;
+            return;
+        }
+
+        _rigidbody2D.velocity =
+            ((Vector2)Destination.position - _rigidbody2D.position) * Speed
+        ;
     }
 }
