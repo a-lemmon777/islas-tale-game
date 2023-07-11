@@ -33,7 +33,7 @@ public class ShrimpMover : MonoBehaviour
         var distanceLeft = Vector2.Distance(Destination.position, _rigidbody2D.position);
 
         // the shrimp arrived
-        if (distanceLeft <= 1)
+        if (distanceLeft <= 0.05f) // proximity threshold, 0.05f makes the shrimp stop on the target
         {
             _rigidbody2D.velocity = Vector2.zero;
             return;
