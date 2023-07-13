@@ -20,6 +20,9 @@ public class BoundaryController : MonoBehaviour
         _collider = GetComponent<Collider2D>();
     }
 
+    // LateUpdate is called after Update(), FixedUpdate(), and all physics calculations.
+    // If any GameObject has this script attached, if it happens to accidentally move off the screen
+    // due to physics or anything else, it will be brought back in bounds before being rendered to the screen.
     void LateUpdate()
     {
         float halfColliderWidth = _collider.bounds.extents.x;
