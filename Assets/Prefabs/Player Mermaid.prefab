@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c81ce96205127554dae8696ae6710886, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AnimationController: {fileID: 3391367493163675675}
   Speed: 10
 --- !u!50 &2623236400860764829
 Rigidbody2D:
@@ -121,6 +122,7 @@ GameObject:
   - component: {fileID: 128252392681915760}
   - component: {fileID: 3691599110689432490}
   - component: {fileID: 7384680680870782412}
+  - component: {fileID: 3391367493163675675}
   m_Layer: 0
   m_Name: Art
   m_TagString: Untagged
@@ -216,3 +218,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3391367493163675675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8312327655263705777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b808045892267b45b5bec0fa3117433, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

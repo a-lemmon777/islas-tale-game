@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
-public class PlayerCharacterScript : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
+    [Tooltip("Reference to the animation controller script of the player")]
+    public AnimationController AnimationController;
+
     [Tooltip("Speed in units per second")]
     public float Speed;
 
@@ -29,6 +29,21 @@ public class PlayerCharacterScript : MonoBehaviour
         _horizontalInput = Input.GetAxisRaw("Horizontal");
         _verticalInput = Input.GetAxisRaw("Vertical");
 
+        var movement = MoveAlongBorders();
+        Vector2 position = _rigidbody2D.position + movement;
+
+        _rigidbody2D.MovePosition(position);
+
+        // animation triggers
+        this.AnimationController.HandleMovement(movement);
+    }
+
+    /// <summary>
+    /// Makes the player move at modified maximum speed along the border
+    /// </summary>
+    /// <returns>Adjusted movement delta</returns>
+    private Vector2 MoveAlongBorders()
+    {
         float halfColliderWidth = _collider.bounds.extents.x;
         float halfColliderHeight = _collider.bounds.extents.y;
 
@@ -86,8 +101,6 @@ public class PlayerCharacterScript : MonoBehaviour
             movement.y = Mathf.Clamp(remainingDistanceY, -movementMagnitude, movementMagnitude);
         }
 
-        Vector2 position = (Vector2)transform.position + movement;
-
-        _rigidbody2D.MovePosition(position);
+        return movement;
     }
 }
