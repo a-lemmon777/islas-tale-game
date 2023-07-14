@@ -280,10 +280,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Mermaid
       objectReference: {fileID: 0}
-    - target: {fileID: 594513264201488557, guid: 805eb4301fd39da46b0b4df1f3bdcb87, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7882433414056290704, guid: 805eb4301fd39da46b0b4df1f3bdcb87, type: 3}
       propertyPath: m_RootOrder
       value: 1
