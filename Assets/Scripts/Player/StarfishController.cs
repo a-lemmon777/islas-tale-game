@@ -21,5 +21,6 @@ public class StarfishController : MonoBehaviour
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _rigidbody2D.velocity = Vector2.right * Speed;
         _rigidbody2D.angularVelocity = AngularVelocity;
+        Destroy(gameObject, 3f);
     }
 }
