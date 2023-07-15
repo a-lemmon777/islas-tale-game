@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [Tooltip("Reference to the animation controller script of the player")]
-    public AnimationController AnimationController;
+    public MermaidAnimator AnimationController;
 
     [Tooltip("Speed in units per second")]
     public float Speed;
