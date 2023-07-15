@@ -38,6 +38,15 @@ public class PlayerController : MonoBehaviour
         this.AnimationController.HandleMovement(movement);
     }
 
+    void Update()
+    {
+        // test
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            this.AnimationController.HandleDamage(-1);
+        }
+    }
+
     /// <summary>
     /// Makes the player move at modified maximum speed along the border
     /// </summary>

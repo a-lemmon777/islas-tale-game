@@ -1,3 +1,5 @@
+using System.Threading;
+using System.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +11,10 @@ public class MermaidAnimator : MonoBehaviour
     /// The animator state machine for the player
     /// </summary>
     private Animator _animator;
+
+    [Tooltip("How long it takes to start the neutral idling in seconds")]
+    public float TimeToIdle = 2;
+    private float _nextIdleTime = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +31,14 @@ public class MermaidAnimator : MonoBehaviour
     public void HandleMovement(Vector2 normalizedInput)
     {
         _animator.SetFloat("Horizontal Velocity", normalizedInput.x);
+
+        // transition to idle
+        if (normalizedInput == Vector2.zero && Time.time > _nextIdleTime)
+        {
+            _nextIdleTime = Time.time + TimeToIdle;
+            _animator.SetTrigger("Idle");
+        }
+        else _animator.ResetTrigger("Idle");
     }
 
 
