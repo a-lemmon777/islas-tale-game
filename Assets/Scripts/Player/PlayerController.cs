@@ -16,6 +16,12 @@ public class PlayerController : MonoBehaviour
     private float _horizontalInput = 0f;
     private float _verticalInput = 0f;
 
+
+    /// <summary>
+    /// Test for the hurt animation
+    /// </summary>
+    private float _lastHorizontalInput;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +42,9 @@ public class PlayerController : MonoBehaviour
 
         // animation triggers
         this.AnimationController.HandleMovement(movement);
+        // test
+        if (_horizontalInput != 0)
+            _lastHorizontalInput = _horizontalInput;
     }
 
     void Update()
@@ -43,7 +52,7 @@ public class PlayerController : MonoBehaviour
         // test
         if (Input.GetKeyDown(KeyCode.H))
         {
-            this.AnimationController.HandleDamage(-1);
+            this.AnimationController.HandleDamage(_lastHorizontalInput);
         }
     }
 

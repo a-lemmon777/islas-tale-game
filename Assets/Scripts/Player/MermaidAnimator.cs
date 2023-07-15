@@ -33,12 +33,21 @@ public class MermaidAnimator : MonoBehaviour
         _animator.SetFloat("Horizontal Velocity", normalizedInput.x);
 
         // transition to idle
-        if (normalizedInput == Vector2.zero && Time.time > _nextIdleTime)
+        var nextPotentialIdleTime = Time.time + TimeToIdle;
+        if (normalizedInput == Vector2.zero)
         {
-            _nextIdleTime = Time.time + TimeToIdle;
-            _animator.SetTrigger("Idle");
+            if (nextPotentialIdleTime < _nextIdleTime)
+                _nextIdleTime = nextPotentialIdleTime;
         }
-        else _animator.ResetTrigger("Idle");
+        else _nextIdleTime = nextPotentialIdleTime;
+
+        if (Time.time > _nextIdleTime)
+        {
+            _animator.SetTrigger("Idle");
+            return;
+        }
+
+        _animator.ResetTrigger("Idle");
     }
 
 
