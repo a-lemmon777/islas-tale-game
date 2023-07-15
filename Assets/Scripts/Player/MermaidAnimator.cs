@@ -52,5 +52,6 @@ public class MermaidAnimator : MonoBehaviour
     public void HandleDamage(float damageSourceHorizontal)
     {
         _animator.SetFloat("Damage Source Horizontal", damageSourceHorizontal);
+        _animator.SetTrigger("Damage");
     }
 }
