@@ -30,9 +30,7 @@ abstract public class CharacterHealth : MonoBehaviour
     /// <param name="healValue"></param>
     public void Heal(int healValue)
     {
-        Health += healValue;
-
-        Health = Mathf.Max(Health, MaxHealth);
+        Health = Mathf.Min(Health + healValue, MaxHealth);
     }
 
     /// <summary>
