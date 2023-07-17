@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 8792064881309368121}
   - component: {fileID: 829834068188971730}
   - component: {fileID: 8461283107902318004}
+  - component: {fileID: 7430090946755638391}
   m_Layer: 0
   m_Name: Shrimp
   m_TagString: Untagged
@@ -195,8 +196,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Destination: {fileID: 4546122873418478744}
-  FacingTowards: {x: 0, y: 0}
   Speed: 5
+--- !u!114 &7430090946755638391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2474266779345672690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11cd7f987b901604eaf981ee8b2ed038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 0
+  Health: 0
 --- !u!1 &6289249610736360395
 GameObject:
   m_ObjectHideFlags: 0

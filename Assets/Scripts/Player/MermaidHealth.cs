@@ -4,20 +4,10 @@ using UnityEngine;
 
 public class MermaidHealth : CharacterHealth
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void Die()
     {
-
+        throw new System.NotImplementedException();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
 
-    }
-
-    override public void Die()
-    {
-
-    }
 }
