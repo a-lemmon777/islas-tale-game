@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class MermaidHealth : CharacterHealth
 {
+
+    [Tooltip("Reference to the mermaid's animation state machine")]
+    public MermaidAnimator AnimationController;
+
     public override void Die()
     {
-        throw new System.NotImplementedException();
+        this.AnimationController.HandleDeath();
     }
 
 
