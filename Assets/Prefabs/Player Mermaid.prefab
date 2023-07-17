@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6936004740129785646}
   - component: {fileID: 2623236400860764829}
   - component: {fileID: 594513264201488557}
+  - component: {fileID: 5318723798107836790}
   m_Layer: 0
   m_Name: Player Mermaid
   m_TagString: Untagged
@@ -111,6 +112,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
+--- !u!114 &5318723798107836790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329315263273244811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a11b4bc0cb44bb4a9d2cf3fbf63789f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8312327655263705777
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,3 +243,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b808045892267b45b5bec0fa3117433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TimeToIdle: 2
