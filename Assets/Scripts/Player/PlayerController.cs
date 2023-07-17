@@ -14,12 +14,19 @@ public class PlayerController : MonoBehaviour
     private MermaidHealth _mermaidHealth;
 
     [Tooltip("Speed in units per second")]
-    public float Speed;
+    public float Speed = 10f;
+
+    [Tooltip("Starfish Prefab")]
+    public GameObject StarfishPrefab;
+
+    [Tooltip("Time between starfish throws in seconds")]
+    public float StarfishCooldown = 0.2f;
 
     private Rigidbody2D _rigidbody2D;
     private Collider2D _collider;
     private float _horizontalInput = 0f;
     private float _verticalInput = 0f;
+    private float _nextStarfishThrowTime = 0f;
 
 
     /// <summary>
@@ -38,6 +45,11 @@ public class PlayerController : MonoBehaviour
     // FixedUpdate is called once per physics frame
     void FixedUpdate()
     {
+        if (Input.GetKey(KeyCode.Space) && Time.time >= _nextStarfishThrowTime)
+        {
+            ThrowStarfish();
+        }
+
         _horizontalInput = Input.GetAxisRaw("Horizontal");
         _verticalInput = Input.GetAxisRaw("Vertical");
 
@@ -127,5 +139,11 @@ public class PlayerController : MonoBehaviour
         }
 
         return movement;
+    }
+
+    void ThrowStarfish()
+    {
+        _nextStarfishThrowTime = Time.time + StarfishCooldown;
+        Instantiate(StarfishPrefab, transform.position, transform.rotation);
     }
 }

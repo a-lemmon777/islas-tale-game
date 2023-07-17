@@ -51,6 +51,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AnimationController: {fileID: 3391367493163675675}
   Speed: 10
+  StarfishPrefab: {fileID: 3063775364242472600, guid: 06f415e451f6d22409146c2972626ee7, type: 3}
+  StarfishCooldown: 0.2
 --- !u!50 &2623236400860764829
 Rigidbody2D:
   serializedVersion: 4
