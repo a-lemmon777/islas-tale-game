@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
+[RequireComponent(typeof(Rigidbody2D), typeof(Collider2D), typeof(MermaidHealth))]
 public class PlayerController : MonoBehaviour
 {
     [Tooltip("Reference to the animation controller script of the player")]
     public MermaidAnimator AnimationController;
+
+    /// <summary>
+    /// Reference to the mermaid health script
+    /// </summary>
+    private MermaidHealth _mermaidHealth;
 
     [Tooltip("Speed in units per second")]
     public float Speed;
@@ -27,6 +32,7 @@ public class PlayerController : MonoBehaviour
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _collider = GetComponent<Collider2D>();
+        _mermaidHealth = GetComponent<MermaidHealth>();
     }
 
     // FixedUpdate is called once per physics frame
@@ -53,6 +59,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.H))
         {
             this.AnimationController.HandleDamage(_lastHorizontalInput);
+            this._mermaidHealth.TakeDamage(1);
         }
     }
 

@@ -60,4 +60,13 @@ public class MermaidAnimator : MonoBehaviour
         _animator.SetFloat("Damage Source Horizontal", damageSourceHorizontal);
         _animator.SetTrigger("Damage");
     }
+
+    /// <summary>
+    /// Triggers the dying animations. The mermaid stays dead visually.
+    /// </summary>
+    public void HandleDeath()
+    {
+        _animator.ResetTrigger("Damage");
+        _animator.SetTrigger("Die");
+    }
 }
