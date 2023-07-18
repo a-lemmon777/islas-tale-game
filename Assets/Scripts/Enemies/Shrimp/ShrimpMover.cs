@@ -3,41 +3,46 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(ShrimpAnimator))]
 public class ShrimpMover : MonoBehaviour
 {
     [Tooltip("Destination position to move to")]
     public Transform Destination;
 
     [Tooltip("Speed in units per second")]
-    public float Speed = 5;
+    public float Speed;
 
-    private Rigidbody2D _rigidbody2D;
+    /// <summary>
+    /// Shrimp animator
+    /// </summary>
+    private ShrimpAnimator _shrimpAnimator;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        this._rigidbody2D = GetComponent<Rigidbody2D>();
+        _shrimpAnimator = GetComponent<ShrimpAnimator>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        float distanceLeft = Vector2.Distance(Destination.position, _rigidbody2D.position);
+        float distanceLeft = Vector2.Distance(Destination.position, transform.position);
 
         // the shrimp arrived
         if (distanceLeft <= 0.05f) // proximity threshold, 0.05f makes the shrimp stop on the target
         {
-            _rigidbody2D.velocity = Vector2.zero;
             return;
         }
 
-        _rigidbody2D.velocity =
-            ((Vector2)Destination.position - _rigidbody2D.position).normalized * Speed
-        ;
+        var nextPosition = Vector2.MoveTowards(
+            transform.position,
+            Destination.position,
+            Speed * Time.deltaTime
+        );
 
-        // flip the image
-        if (_rigidbody2D.velocity.x < 0)
-            this.transform.localScale = new Vector3(-1, 1, 1);
+        var horizontalDirection = (nextPosition - (Vector2)transform.position).x;
+        transform.position = nextPosition;
+
+        // animation triggers
+        _shrimpAnimator.HandleMovement(horizontalDirection);
     }
 }
