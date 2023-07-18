@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2623236400860764829}
   - component: {fileID: 594513264201488557}
   - component: {fileID: 5318723798107836790}
+  - component: {fileID: 2557520112759883829}
   m_Layer: 0
   m_Name: Player Mermaid
   m_TagString: Untagged
@@ -60,7 +61,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 329315263273244811}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -110,7 +111,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 1.6, y: 3.8}
   m_Direction: 0
 --- !u!114 &5318723798107836790
 MonoBehaviour:
@@ -127,6 +128,18 @@ MonoBehaviour:
   MaxHealth: 2
   Health: 2
   AnimationController: {fileID: 3391367493163675675}
+--- !u!114 &2557520112759883829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329315263273244811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31565172fc61bba42b8b85b3141b651a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8312327655263705777
 GameObject:
   m_ObjectHideFlags: 0
