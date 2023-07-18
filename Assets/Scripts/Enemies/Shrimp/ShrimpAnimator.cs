@@ -29,6 +29,7 @@ public class ShrimpAnimator : MonoBehaviour
     public void HandleDamage(float damageSource)
     {
         _animator.SetFloat("Horizontal Damage Source", damageSource);
+        _animator.SetTrigger("Damage");
     }
 
     /// <summary>
@@ -36,6 +37,7 @@ public class ShrimpAnimator : MonoBehaviour
     /// </summary>
     public void HandleDeath()
     {
-        _animator.SetTrigger("Die");
+        _animator.ResetTrigger("Damage");
+        _animator.SetBool("Is Dead", true);
     }
 }
