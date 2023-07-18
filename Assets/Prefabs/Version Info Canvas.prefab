@@ -74,7 +74,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 2023/07/16 7:51 PM PDT, Implement HP
+  m_Text: 2023/07/17 5:00 PM PDT, Character Resize
 --- !u!223 &7346726530821587598
 Canvas:
   m_ObjectHideFlags: 0
