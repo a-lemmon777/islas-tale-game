@@ -15,13 +15,17 @@ public class StarfishController : MonoBehaviour
 
     Rigidbody2D _rigidbody2D;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _rigidbody2D.velocity = Vector2.right * Speed;
         _rigidbody2D.angularVelocity = AngularVelocity;
         // Destroy the starfish after 3 seconds to save memory.
         Destroy(gameObject, 3f);
+    }
+
+    public void SetDirection(Vector2 direction)
+    {
+        _rigidbody2D.velocity = direction.normalized * Speed;
     }
 }

@@ -144,6 +144,7 @@ public class PlayerController : MonoBehaviour
     void ThrowStarfish()
     {
         _nextStarfishThrowTime = Time.time + StarfishCooldown;
-        Instantiate(StarfishPrefab, transform.position, transform.rotation);
+        GameObject starfish = Instantiate(StarfishPrefab, transform.position, transform.rotation);
+        starfish.GetComponent<StarfishController>().SetDirection(new Vector2(1, 1));
     }
 }
