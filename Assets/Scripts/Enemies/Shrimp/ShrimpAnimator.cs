@@ -14,21 +14,11 @@ public class ShrimpAnimator : MonoBehaviour
     }
 
     /// <summary>
-    /// Sets the float variable for the orientation of the shrimp
-    /// </summary>
-    /// <param name="horizontalOrientation">Negative: facing left, Positive: facing right</param>
-    public void HandleMovement(float horizontalOrientation)
-    {
-        // _animator.SetFloat("Horizontal Orientation", horizontalOrientation);
-    }
-
-    /// <summary>
     /// Sets the float variable for the source of the damage taken
     /// </summary>
     /// <param name="damageSource">Negative: hit from the left, Positive: hit from the right</param>
     public void HandleDamage(float damageSource)
     {
-        // _animator.SetFloat("Horizontal Damage Source", damageSource);
         _animator.SetTrigger("Damage");
     }
 
