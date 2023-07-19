@@ -3,21 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D), typeof(ShrimpAnimator))]
 public class ShrimpMover : MonoBehaviour
 {
     [Tooltip("Destination position to move to")]
     public Transform Destination;
 
     [Tooltip("Speed in units per second")]
-    public float Speed = 5;
+    public float Speed;
 
     private Rigidbody2D _rigidbody2D;
 
-    // Start is called before the first frame update
-    void Start()
+    private ShrimpAnimator _shrimpAnimator;
+
+    private void Start()
     {
         this._rigidbody2D = GetComponent<Rigidbody2D>();
+        this._shrimpAnimator = GetComponent<ShrimpAnimator>();
     }
 
     // Update is called once per frame
@@ -36,8 +38,9 @@ public class ShrimpMover : MonoBehaviour
             ((Vector2)Destination.position - _rigidbody2D.position).normalized * Speed
         ;
 
-        // flip the image
-        if (_rigidbody2D.velocity.x < 0)
-            this.transform.localScale = new Vector3(-1, 1, 1);
+        // animations
+        if (_rigidbody2D.velocity.x < 0) this.transform.localScale = new Vector3(-1, 1, 1);
+        else this.transform.localScale = Vector3.one;
     }
+
 }

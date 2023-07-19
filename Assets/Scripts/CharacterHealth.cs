@@ -17,7 +17,7 @@ abstract public class CharacterHealth : MonoBehaviour
     /// Decrements the health and triggers death if appropriate
     /// </summary>
     /// <param name="damageValue">How much take to take</param>
-    public void TakeDamage(int damageValue)
+    virtual public void TakeDamage(int damageValue)
     {
         Health -= damageValue;
 
@@ -28,7 +28,7 @@ abstract public class CharacterHealth : MonoBehaviour
     /// Increments the health up to max health
     /// </summary>
     /// <param name="healValue"></param>
-    public void Heal(int healValue)
+    virtual public void Heal(int healValue)
     {
         Health = Mathf.Min(Health + healValue, MaxHealth);
     }
