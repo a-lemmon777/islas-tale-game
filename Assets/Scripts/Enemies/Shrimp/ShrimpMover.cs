@@ -39,7 +39,8 @@ public class ShrimpMover : MonoBehaviour
         ;
 
         // animations
-        _shrimpAnimator.HandleMovement(_rigidbody2D.velocity.x);
+        if (_rigidbody2D.velocity.x < 0) this.transform.localScale = new Vector3(-1, 1, 1);
+        else this.transform.localScale = Vector3.one;
     }
 
 }

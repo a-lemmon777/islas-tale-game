@@ -19,7 +19,7 @@ public class ShrimpAnimator : MonoBehaviour
     /// <param name="horizontalOrientation">Negative: facing left, Positive: facing right</param>
     public void HandleMovement(float horizontalOrientation)
     {
-        _animator.SetFloat("Horizontal Orientation", horizontalOrientation);
+        // _animator.SetFloat("Horizontal Orientation", horizontalOrientation);
     }
 
     /// <summary>
@@ -28,7 +28,7 @@ public class ShrimpAnimator : MonoBehaviour
     /// <param name="damageSource">Negative: hit from the left, Positive: hit from the right</param>
     public void HandleDamage(float damageSource)
     {
-        _animator.SetFloat("Horizontal Damage Source", damageSource);
+        // _animator.SetFloat("Horizontal Damage Source", damageSource);
         _animator.SetTrigger("Damage");
     }
 
@@ -38,6 +38,6 @@ public class ShrimpAnimator : MonoBehaviour
     public void HandleDeath()
     {
         _animator.ResetTrigger("Damage");
-        _animator.SetBool("Is Dead", true);
+        _animator.SetTrigger("Die");
     }
 }
