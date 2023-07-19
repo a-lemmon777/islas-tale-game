@@ -13,20 +13,18 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private MermaidHealth _mermaidHealth;
 
+    /// <summary>
+    /// Reference to the mermaid combat script
+    /// </summary>
+    private MermaidCombat _mermaidCombat;
+
     [Tooltip("Speed in units per second")]
     public float Speed = 10f;
-
-    [Tooltip("Starfish Prefab")]
-    public GameObject StarfishPrefab;
-
-    [Tooltip("Time between starfish throws in seconds")]
-    public float StarfishCooldown = 0.2f;
 
     private Rigidbody2D _rigidbody2D;
     private Collider2D _collider;
     private float _horizontalInput = 0f;
     private float _verticalInput = 0f;
-    private float _nextStarfishThrowTime = 0f;
 
 
     /// <summary>
@@ -40,14 +38,15 @@ public class PlayerController : MonoBehaviour
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _collider = GetComponent<Collider2D>();
         _mermaidHealth = GetComponent<MermaidHealth>();
+        _mermaidCombat = GetComponent<MermaidCombat>();
     }
 
     // FixedUpdate is called once per physics frame
     void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.Space) && Time.time >= _nextStarfishThrowTime)
+        if (Input.GetKey(KeyCode.Space))
         {
-            ThrowStarfish();
+            _mermaidCombat.ThrowStarfish(new Vector2(1f, 1f));
         }
 
         _horizontalInput = Input.GetAxisRaw("Horizontal");
@@ -139,12 +138,5 @@ public class PlayerController : MonoBehaviour
         }
 
         return movement;
-    }
-
-    void ThrowStarfish()
-    {
-        _nextStarfishThrowTime = Time.time + StarfishCooldown;
-        GameObject starfish = Instantiate(StarfishPrefab, transform.position, transform.rotation);
-        starfish.GetComponent<StarfishController>().SetDirection(new Vector2(1, 1));
     }
 }

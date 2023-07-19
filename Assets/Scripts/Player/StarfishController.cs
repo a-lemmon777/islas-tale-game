@@ -5,13 +5,11 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class StarfishController : MonoBehaviour
 {
-    [SerializeField]
     [Tooltip("Speed in units per second")]
-    private float Speed = 20f;
+    public float Speed = 20f;
 
-    [SerializeField]
     [Tooltip("Rate of spin in degrees per second")]
-    private float AngularVelocity = -720f;
+    public float AngularVelocity = -720f;
 
     Rigidbody2D _rigidbody2D;
 

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 594513264201488557}
   - component: {fileID: 5318723798107836790}
   - component: {fileID: 2557520112759883829}
+  - component: {fileID: 4783705638685626141}
   m_Layer: 0
   m_Name: Player Mermaid
   m_TagString: Untagged
@@ -51,8 +52,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AnimationController: {fileID: 3391367493163675675}
   Speed: 10
-  StarfishPrefab: {fileID: 3063775364242472600, guid: 06f415e451f6d22409146c2972626ee7, type: 3}
-  StarfishCooldown: 0.2
 --- !u!50 &2623236400860764829
 Rigidbody2D:
   serializedVersion: 4
@@ -142,6 +141,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31565172fc61bba42b8b85b3141b651a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4783705638685626141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329315263273244811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52e8a6c69ead1134ca778e0593a6d23f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StarfishCooldown: 0.2
+  ThrowReleaseOffset: 2
+  StarfishPrefab: {fileID: 3063775364242472600, guid: 06f415e451f6d22409146c2972626ee7, type: 3}
 --- !u!1 &8312327655263705777
 GameObject:
   m_ObjectHideFlags: 0
