@@ -8,6 +8,10 @@ public class PauseMenu : MonoBehaviour
     [Tooltip("Reference to the level manager state machine")]
     public LevelStateMachine LevelStateMachine;
 
+    /// <summary>
+    /// Click listeners to menu options
+    /// </summary>
+    /// <param name="buttonName"></param>
     public void OnClick(string buttonName)
     {
         switch (buttonName)

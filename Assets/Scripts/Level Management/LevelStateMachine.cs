@@ -5,6 +5,8 @@ using KevinCastejon.FiniteStateMachine;
 
 /// <summary>
 /// A finite state machine to control the level. Otherwise, a bunch of booleans are needed.
+/// 
+/// From an asset on the store.
 /// </summary>
 public class LevelStateMachine : AbstractFiniteStateMachine
 {

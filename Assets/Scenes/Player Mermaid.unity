@@ -909,10 +909,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1357662529477026402, guid: 3d895cbb0b5ed074f9369dd8eb18881b, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2169324531685356603, guid: 3d895cbb0b5ed074f9369dd8eb18881b, type: 3}
       propertyPath: LevelStateMachine
       value: 
