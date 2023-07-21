@@ -1,8 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(MermaidHealth), typeof(MermaidCombat), typeof(MermaidMovement))]
+[RequireComponent(typeof(MermaidHealth))]
+[RequireComponent(typeof(MermaidCombat))]
+[RequireComponent(typeof(MermaidMovement))]
+[RequireComponent(typeof(PlayerInput))]
 public class PlayerController : MonoBehaviour
 {
     [Tooltip("Reference to the animation controller script of the player")]
@@ -23,6 +27,11 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private MermaidMovement _mermaidMovement;
 
+    /// <summary>
+    /// Reference to the player input component
+    /// </summary>
+    private PlayerInput _playerInput;
+
     private float _horizontalInput = 0f;
     private float _verticalInput = 0f;
 
@@ -37,15 +46,12 @@ public class PlayerController : MonoBehaviour
         _mermaidHealth = GetComponent<MermaidHealth>();
         _mermaidCombat = GetComponent<MermaidCombat>();
         _mermaidMovement = GetComponent<MermaidMovement>();
+        _playerInput = GetComponent<PlayerInput>();
     }
 
     // FixedUpdate is called once per physics frame
     void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.Space))
-        {
-            _mermaidCombat.ThrowStarfish(new Vector2(1f, 1f));
-        }
 
         _horizontalInput = Input.GetAxisRaw("Horizontal");
         _verticalInput = Input.GetAxisRaw("Vertical");
