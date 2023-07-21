@@ -5,15 +5,28 @@ using UnityEngine;
 public class PauseMenu : MonoBehaviour
 {
 
-    // Update is called once per frame
-    void Update()
+    [Tooltip("Reference to the level manager state machine")]
+    public LevelStateMachine LevelStateMachine;
+
+    public void OnClick(string buttonName)
     {
+        switch (buttonName)
+        {
+            case "Resume":
+                LevelStateMachine.TransitionToState(LevelStateMachine.LevelState.IN_BATTLE);
+                break;
 
-    }
+            case "Options":
+                Debug.Log("Clicked options");
+                break;
 
+            case "Exit":
+                Application.Quit();
+                break;
 
-    public void Pause()
-    {
+            default:
 
+                break;
+        }
     }
 }
