@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(MermaidInput))]
 public class MermaidMovement : MonoBehaviour
 {
     [Tooltip("Speed in units per second")]
@@ -10,19 +12,42 @@ public class MermaidMovement : MonoBehaviour
 
     private Collider2D _collider;
     private Rigidbody2D _rigidbody2D;
+    private MermaidInput _mermaidInput;
 
-    // Start is called before the first frame update
-    void Start()
+    private Vector2 _moveDirection;
+
+    void Awake()
     {
         _collider = GetComponent<Collider2D>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        _mermaidInput = GetComponent<MermaidInput>();
+    }
+
+    private void OnEnable()
+    {
+        _mermaidInput.MermaidMoveEvent += OnMove;
+    }
+
+    private void OnDisable()
+    {
+        _mermaidInput.MermaidMoveEvent -= OnMove;
+    }
+
+    private void OnMove(Vector2 direction)
+    {
+        _moveDirection = direction;
+    }
+
+    private void FixedUpdate()
+    {
+        if (_moveDirection != Vector2.zero)
+            Move(_moveDirection.normalized);
     }
 
     /// <summary>
-    /// Makes the player move at modified maximum speed along the border
+    /// Makes the player move, while not overshooting the screen boundaries.
     /// </summary>
-    /// <returns>Adjusted movement delta</returns>
-    public Vector2 Move(Vector2 input)
+    public void Move(Vector2 normalizedDirection)
     {
         float halfColliderWidth = _collider.bounds.extents.x;
         float halfColliderHeight = _collider.bounds.extents.y;
@@ -32,8 +57,8 @@ public class MermaidMovement : MonoBehaviour
         float lowerBoundY = BoundaryController.SCREEN_MIN_Y + halfColliderHeight;
         float upperBoundY = BoundaryController.SCREEN_MAX_Y - halfColliderHeight;
 
-        float remainingDistanceX = input.x > 0 ? upperBoundX - transform.position.x : lowerBoundX - transform.position.x;
-        float remainingDistanceY = input.y > 0 ? upperBoundY - transform.position.y : lowerBoundY - transform.position.y;
+        float remainingDistanceX = normalizedDirection.x > 0 ? upperBoundX - transform.position.x : lowerBoundX - transform.position.x;
+        float remainingDistanceY = normalizedDirection.y > 0 ? upperBoundY - transform.position.y : lowerBoundY - transform.position.y;
 
         Vector2 movement = Vector2.zero;
         float movementMagnitude = Speed * Time.deltaTime;
@@ -42,7 +67,7 @@ public class MermaidMovement : MonoBehaviour
         float movementMagnitudeSquared = Mathf.Pow(movementMagnitude, 2);
 
         // The case when the player inputs diagonal movement.
-        if (Mathf.Abs(input.x) > 0 && Mathf.Abs(input.y) > 0)
+        if (Mathf.Abs(normalizedDirection.x) > 0 && Mathf.Abs(normalizedDirection.y) > 0)
         {
             // The magnitude of movement per axis if the full movement is split equally between both dimensions.
             float perAxisEqualMovement = Mathf.Sqrt(movementMagnitudeSquared / 2);
@@ -66,17 +91,17 @@ public class MermaidMovement : MonoBehaviour
             // The case when the player is not close to any edge.
             else
             {
-                movement.x = input.x > 0 ? perAxisEqualMovement : -perAxisEqualMovement;
-                movement.y = input.y > 0 ? perAxisEqualMovement : -perAxisEqualMovement;
+                movement.x = normalizedDirection.x > 0 ? perAxisEqualMovement : -perAxisEqualMovement;
+                movement.y = normalizedDirection.y > 0 ? perAxisEqualMovement : -perAxisEqualMovement;
             }
         }
         // The case when the player inputs only horizontal movement.
-        else if (Mathf.Abs(input.x) > 0)
+        else if (Mathf.Abs(normalizedDirection.x) > 0)
         {
             movement.x = Mathf.Clamp(remainingDistanceX, -movementMagnitude, movementMagnitude);
         }
         // The case when the player inputs only vertical movement.
-        else if (Mathf.Abs(input.y) > 0)
+        else if (Mathf.Abs(normalizedDirection.y) > 0)
         {
             movement.y = Mathf.Clamp(remainingDistanceY, -movementMagnitude, movementMagnitude);
         }
@@ -84,7 +109,5 @@ public class MermaidMovement : MonoBehaviour
         Vector2 position = _rigidbody2D.position + movement;
 
         _rigidbody2D.MovePosition(position);
-
-        return movement;
     }
 }
