@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
+/// <summary>
+/// Sanitizes the raw controls inputs and makes them suitable for use by other player-character
+/// scripts.
+/// </summary>
 public class MermaidInput : MonoBehaviour
 {
     [Tooltip("Reference to the InputReader scriptable object")]

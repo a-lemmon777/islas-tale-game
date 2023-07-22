@@ -37,7 +37,7 @@ public class MermaidAnimator : MonoBehaviour
 
     private void Update()
     {
-        HandleMovement(_aimDirection.normalized);
+        HandleMovement(_aimDirection);
     }
 
     /// <summary>

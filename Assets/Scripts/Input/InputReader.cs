@@ -3,6 +3,12 @@ using UnityEngine.InputSystem;
 using UnityEngine.Events;
 using System.Reflection;
 
+/// <summary>
+/// Exposes all inputs defined in the PlayerControls.inputactions asset as UnityActions that
+/// can be subscribed to. This class automatically updates the InputReader scriptable object
+/// asset, which can be attached to nearly anything in the Unity Inspector. When new input actions
+/// are defined, this file must be updated to handle the new events and expose them via new UnityActions.
+/// </summary>
 [CreateAssetMenu(fileName = "InputReader", menuName = "Game/Input Reader")]
 public class InputReader : ScriptableObject, PlayerControls.IGameplayActions, PlayerControls.IMenusActions
 {

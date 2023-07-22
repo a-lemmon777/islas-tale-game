@@ -46,6 +46,8 @@ public class MermaidMovement : MonoBehaviour
 
     /// <summary>
     /// Makes the player move, while not overshooting the screen boundaries.
+    /// <param name="normalizedDirection">This input should be normalized, as well as
+    /// locked to only 8 directions.</param>
     /// </summary>
     public void Move(Vector2 normalizedDirection)
     {
