@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(MermaidHealth))]
-[RequireComponent(typeof(MermaidCombat))]
 [RequireComponent(typeof(MermaidMovement))]
 public class PlayerController : MonoBehaviour
 {
@@ -15,11 +14,6 @@ public class PlayerController : MonoBehaviour
     /// Reference to the mermaid health script
     /// </summary>
     private MermaidHealth _mermaidHealth;
-
-    /// <summary>
-    /// Reference to the mermaid combat script
-    /// </summary>
-    private MermaidCombat _mermaidCombat;
 
     /// <summary>
     /// Reference to the mermaid movement script
@@ -38,7 +32,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         _mermaidHealth = GetComponent<MermaidHealth>();
-        _mermaidCombat = GetComponent<MermaidCombat>();
         _mermaidMovement = GetComponent<MermaidMovement>();
     }
 
@@ -51,8 +44,6 @@ public class PlayerController : MonoBehaviour
 
         var movement = _mermaidMovement.Move(new Vector2(_horizontalInput, _verticalInput));
 
-        // animation triggers
-        this.AnimationController.HandleMovement(movement);
         // test
         if (_horizontalInput != 0)
             _lastHorizontalInput = _horizontalInput;
