@@ -65,28 +65,27 @@ public class MermaidCombat : MonoBehaviour
 
     private void FixedUpdate()
     {
-        ThrowStarfish();
+        ThrowStarfish(_throwDirection);
     }
 
     /// <summary>
     /// Attack by throwing a starfish. If the player has stopped aiming, the mermaid will
     /// continue to throw in the last left/right direction that was input.
     /// </summary>
-    /// <param name="direction">The direction to throw the starfish.</param>
-    public void ThrowStarfish()
+    /// <param name="normalizedDirection">The direction to throw the starfish.</param>
+    public void ThrowStarfish(Vector2 normalizedDirection)
     {
         float currentTime = Time.time;
         if (currentTime >= _nextStarfishThrowTime && (_rangedAttackInputActive || _rangedAttackQueued))
         {
             _rangedAttackQueued = false;
             _nextStarfishThrowTime = currentTime + StarfishCooldown;
-            Vector3 throwReleaseOffset = (Vector3)(_throwDirection.normalized * ThrowReleaseOffset * transform.localScale.x);
+            Vector3 throwReleaseOffset = (Vector3)(normalizedDirection * ThrowReleaseOffset * transform.localScale.x);
             Vector3 spawnLocation = transform.position + throwReleaseOffset;
             GameObject starfish = Instantiate(StarfishPrefab, spawnLocation, Quaternion.identity);
-            Vector2 throwDirection = _throwDirection;
-            if (throwDirection == Vector2.zero)
-                throwDirection.x = _lastHorizontalInput;
-            starfish.GetComponent<StarfishController>().SetDirection(throwDirection.normalized);
+            if (normalizedDirection == Vector2.zero)
+                normalizedDirection.x = _lastHorizontalInput;
+            starfish.GetComponent<StarfishController>().SetDirection(normalizedDirection);
         }
     }
 }
