@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PauseMenuButton : MonoBehaviour
+public class CrownSelection : MonoBehaviour
 {
     [Tooltip("Crown game object of this button")]
     public GameObject Crown;
