@@ -2,7 +2,7 @@
     "name": "PlayerControls",
     "maps": [
         {
-            "name": "Mermaid",
+            "name": "Gameplay",
             "id": "bd878eb0-f624-4abb-8e99-d77310dc3c1e",
             "actions": [
                 {
@@ -24,9 +24,18 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Aim",
+                    "name": "AimDirection",
                     "type": "Value",
                     "id": "e01dc997-9e85-4107-a5f7-7faef3278806",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "AimLocation",
+                    "type": "Value",
+                    "id": "7817535e-ab17-4571-b89b-10eca7201dda",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
@@ -107,7 +116,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Aim",
+                    "action": "AimDirection",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -118,7 +127,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Aim",
+                    "action": "AimDirection",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -129,7 +138,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Aim",
+                    "action": "AimDirection",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -140,7 +149,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Aim",
+                    "action": "AimDirection",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -151,9 +160,48 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Aim",
+                    "action": "AimDirection",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "af891458-297e-4118-b3ac-80ce85538ee2",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AimLocation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Menus",
+            "id": "49b884fe-ad57-465e-920c-60cd6f0ccb28",
+            "actions": [
+                {
+                    "name": "Confirm",
+                    "type": "Button",
+                    "id": "fe770f64-0f5e-490e-90a6-7a01aa4f1a0b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c71eac26-cef0-416b-8ebc-0834aa9b82e8",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Confirm",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

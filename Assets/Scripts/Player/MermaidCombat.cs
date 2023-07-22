@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(MermaidInput))]
 public class MermaidCombat : MonoBehaviour
 {
     [Tooltip("Time between starfish throws in seconds")]
@@ -20,26 +19,40 @@ public class MermaidCombat : MonoBehaviour
     private bool _rangedAttackQueued = false;
     private float _lastHorizontalInput = 1f; // Default to right
 
-    private PlayerInput _playerInput;
+    /// <summary>
+    /// Reference to the mermaid input script
+    /// </summary>
+    private MermaidInput _mermaidInput;
 
-    private void Start()
+    private void Awake()
     {
-        _playerInput = GetComponent<PlayerInput>();
-        _playerInput.actions["Aim"].performed += context => OnAimEvent(context);
-        _playerInput.actions["Aim"].canceled += context => OnAimEvent(context);
-        _playerInput.actions["RangedAttack"].performed += _ => OnRangedAttackPerformed();
-        _playerInput.actions["RangedAttack"].canceled += _ => OnRangedAttackCanceled();
+        _mermaidInput = GetComponent<MermaidInput>();
     }
 
-    private void OnAimEvent(InputAction.CallbackContext context)
+    // This function is called when the object becomes enabled and active
+    private void OnEnable()
     {
-        Vector2 direction = context.ReadValue<Vector2>();
+        _mermaidInput.MermaidAimEvent += OnAim;
+        _mermaidInput.MermaidRangedAttackEvent += OnRangedAttack;
+        _mermaidInput.MermaidRangedAttackCanceledEvent += OnRangedAttackCanceled;
+    }
+
+    // This function is called when the behaviour becomes disabled or inactive
+    private void OnDisable()
+    {
+        _mermaidInput.MermaidAimEvent -= OnAim;
+        _mermaidInput.MermaidRangedAttackEvent -= OnRangedAttack;
+        _mermaidInput.MermaidRangedAttackCanceledEvent -= OnRangedAttackCanceled;
+    }
+
+    private void OnAim(Vector2 direction)
+    {
         if (direction.x != 0)
             _lastHorizontalInput = direction.x;
         _throwDirection = direction;
     }
 
-    private void OnRangedAttackPerformed()
+    private void OnRangedAttack()
     {
         _rangedAttackQueued = true;
         _rangedAttackInputActive = true;
@@ -56,7 +69,8 @@ public class MermaidCombat : MonoBehaviour
     }
 
     /// <summary>
-    /// Attack by throwing a starfish.
+    /// Attack by throwing a starfish. If the player has stopped aiming, the mermaid will
+    /// continue to throw in the last left/right direction that was input.
     /// </summary>
     /// <param name="direction">The direction to throw the starfish.</param>
     public void ThrowStarfish()
