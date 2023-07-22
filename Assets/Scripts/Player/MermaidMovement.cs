@@ -41,7 +41,12 @@ public class MermaidMovement : MonoBehaviour
     private void FixedUpdate()
     {
         if (_moveDirection != Vector2.zero)
-            Move(_moveDirection.normalized);
+            Move(_moveDirection);
+        //Vector2 direction = Vector2.zero;
+        //direction.x = Input.GetAxisRaw("Horizontal");
+        //direction.y = Input.GetAxisRaw("Vertical");
+        //Debug.Log(_moveDirection.x + " " + _moveDirection.y);
+        //Move(direction);
     }
 
     /// <summary>
