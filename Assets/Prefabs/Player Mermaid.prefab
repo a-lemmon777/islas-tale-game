@@ -14,6 +14,10 @@ GameObject:
   - component: {fileID: 594513264201488557}
   - component: {fileID: 5318723798107836790}
   - component: {fileID: 2557520112759883829}
+  - component: {fileID: 4783705638685626141}
+  - component: {fileID: -7131003749957975648}
+  - component: {fileID: 8390189169814641814}
+  - component: {fileID: -257867016053858311}
   m_Layer: 0
   m_Name: Player Mermaid
   m_TagString: Untagged
@@ -50,7 +54,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AnimationController: {fileID: 3391367493163675675}
-  Speed: 10
 --- !u!50 &2623236400860764829
 Rigidbody2D:
   serializedVersion: 4
@@ -140,6 +143,110 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31565172fc61bba42b8b85b3141b651a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4783705638685626141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329315263273244811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52e8a6c69ead1134ca778e0593a6d23f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StarfishCooldown: 0.2
+  ThrowReleaseOffset: 2
+  StarfishPrefab: {fileID: 3063775364242472600, guid: 06f415e451f6d22409146c2972626ee7, type: 3}
+  Inputs: {fileID: 11400000, guid: 36c858acf03867d4c82993f1b9b67fa8, type: 2}
+--- !u!114 &-7131003749957975648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329315263273244811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b99854e8783cc674eabb52101f56a4c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 10
+--- !u!114 &8390189169814641814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329315263273244811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 91b0ce740c4a64d4784bc516c6fdb129, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6d965a27-91e6-48cd-a529-27afbe504502
+    m_ActionName: Mermaid/Move[/Keyboard/e,/Keyboard/d,/Keyboard/s,/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fa2d684b-4f34-41da-b580-c5c8f0c4a226
+    m_ActionName: Mermaid/Throw Starfish[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e01dc997-9e85-4107-a5f7-7faef3278806
+    m_ActionName: Mermaid/Aim[/Keyboard/i,/Keyboard/k,/Keyboard/j,/Keyboard/l]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7817535e-ab17-4571-b89b-10eca7201dda
+    m_ActionName: Gameplay/MouseAim[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fe770f64-0f5e-490e-90a6-7a01aa4f1a0b
+    m_ActionName: Menus/Confirm[/Keyboard/enter]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Gameplay
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &-257867016053858311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329315263273244811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8501afb8ca716f547849b388259c237a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputReader: {fileID: 11400000, guid: 36c858acf03867d4c82993f1b9b67fa8, type: 2}
 --- !u!1 &8312327655263705777
 GameObject:
   m_ObjectHideFlags: 0
