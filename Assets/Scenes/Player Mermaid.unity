@@ -131,14 +131,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 204501113787231915, guid: 82f528ab00481224592542f5ce8eb5f2, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 336998947131884064, guid: 82f528ab00481224592542f5ce8eb5f2, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2505809553450446473, guid: 82f528ab00481224592542f5ce8eb5f2, type: 3}
       propertyPath: PlayerHealth
       value: 
@@ -323,6 +315,10 @@ PrefabInstance:
     - target: {fileID: 371887206270249498, guid: 9a7397e76791efb4c80e83c100bf7059, type: 3}
       propertyPath: m_Name
       value: Version Info Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 807323723623632165, guid: 9a7397e76791efb4c80e83c100bf7059, type: 3}
+      propertyPath: m_Text
+      value: 2023/07/22 4 PM PDT, Pause Menu and HUD
       objectReference: {fileID: 0}
     - target: {fileID: 8326917063677024743, guid: 9a7397e76791efb4c80e83c100bf7059, type: 3}
       propertyPath: m_Pivot.x
@@ -847,10 +843,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5844011121918627008, guid: 9e3d58cdd845b99469b27ba7c947e5b4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7069880544771499002, guid: 9e3d58cdd845b99469b27ba7c947e5b4, type: 3}
-      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
