@@ -10,8 +10,8 @@ using KevinCastejon.FiniteStateMachine;
 /// </summary>
 public class LevelStateMachine : AbstractFiniteStateMachine
 {
-    [Tooltip("Reference to the pause menu")]
-    public GameObject PauseMenuCanvas;
+    [Tooltip("Reference to the scriptable object for level events")]
+    public LevelEvents LevelEvents;
 
     public enum LevelState
     {
@@ -27,14 +27,16 @@ public class LevelStateMachine : AbstractFiniteStateMachine
     }
     public class InBattleState : AbstractState
     {
+        public InBattleState()
+        {
+            LevelEvents.Instance.Pause.AddListener(() => TransitionToState(LevelState.PAUSED));
+        }
         public override void OnEnter()
         {
             Time.timeScale = 1;
-            (this._parentStateMachine as LevelStateMachine).PauseMenuCanvas.SetActive(false);
         }
         public override void OnUpdate()
         {
-            if (Input.GetKeyDown(KeyCode.Escape)) TransitionToState(LevelState.PAUSED);
         }
         public override void OnExit()
         {
@@ -42,15 +44,18 @@ public class LevelStateMachine : AbstractFiniteStateMachine
     }
     public class PausedState : AbstractState
     {
+        public PausedState()
+        {
+            LevelEvents.Instance.Resume.AddListener(() => TransitionToState(LevelState.IN_BATTLE));
+        }
+
         public override void OnEnter()
         {
             Time.timeScale = 0;
-            (this._parentStateMachine as LevelStateMachine).PauseMenuCanvas.SetActive(true);
 
         }
         public override void OnUpdate()
         {
-            if (Input.GetKeyDown(KeyCode.Escape)) TransitionToState(LevelState.IN_BATTLE);
         }
         public override void OnExit()
         {
