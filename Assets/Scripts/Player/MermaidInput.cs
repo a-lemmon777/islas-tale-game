@@ -62,8 +62,8 @@ public class MermaidInput : MonoBehaviour
     // Translate the location to a direction from the player character.
     private void OnAimLocation(Vector2 location)
     {
-        Vector2 locationWorldCoords = (Vector2) Camera.main.ScreenToWorldPoint(location);
-        Vector2 direction = locationWorldCoords - (Vector2) transform.position;
+        Vector2 locationWorldCoords = (Vector2)Camera.main.ScreenToWorldPoint(location);
+        Vector2 direction = locationWorldCoords - (Vector2)transform.position;
         MermaidAimEvent.Invoke(ConvertToNormalizedEightDirectionalVector(direction));
     }
 
