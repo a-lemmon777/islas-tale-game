@@ -1,8 +1,4 @@
-using System.Threading;
-using System.Threading.Tasks;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
 public class MermaidAnimator : MonoBehaviour
@@ -11,15 +7,37 @@ public class MermaidAnimator : MonoBehaviour
     /// The animator state machine for the player
     /// </summary>
     private Animator _animator;
+    private MermaidInput _mermaidInput;
 
     [Tooltip("How long it takes to start the neutral idling in seconds")]
     public float TimeToIdle = 2;
     private float _nextIdleTime = 0;
+    private Vector2 _aimDirection = Vector2.zero;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         _animator = GetComponent<Animator>();
+        _mermaidInput = GetComponentInParent<MermaidInput>();
+    }
+
+    private void OnEnable()
+    {
+        _mermaidInput.MermaidAimEvent += OnAim;
+    }
+
+    private void OnDisable()
+    {
+        _mermaidInput.MermaidAimEvent -= OnAim;
+    }
+
+    private void OnAim(Vector2 direction)
+    {
+        _aimDirection = direction;
+    }
+
+    private void Update()
+    {
+        HandleMovement(_aimDirection);
     }
 
     /// <summary>

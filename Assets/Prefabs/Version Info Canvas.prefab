@@ -74,7 +74,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 2023/07/21 8 PM PDT, Integrate in-level UI
+  m_Text: 2023/07/22 4 PM PDT, Projectile Shooting
 --- !u!223 &7346726530821587598
 Canvas:
   m_ObjectHideFlags: 0
