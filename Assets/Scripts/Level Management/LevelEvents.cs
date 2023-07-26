@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-[CreateAssetMenu(menuName = "the-shell-outs-game/Level Events", fileName = "Level Events")]
+[CreateAssetMenu(menuName = "Game/Level Events", fileName = "Level Events")]
 public class LevelEvents : ScriptableObject
 {
     public UnityEvent Pause;

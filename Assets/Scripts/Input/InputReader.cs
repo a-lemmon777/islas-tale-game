@@ -34,6 +34,10 @@ public class InputReader : ScriptableObject, PlayerControls.IGameplayActions, Pl
         }
 
         EnableGameplayInput();
+
+        // level states
+        LevelEvents.Instance.Pause.AddListener(EnableMenuInput);
+        LevelEvents.Instance.Resume.AddListener(EnableGameplayInput);
     }
 
     private void OnDisable()
@@ -74,12 +78,24 @@ public class InputReader : ScriptableObject, PlayerControls.IGameplayActions, Pl
             AimLocationEvent.Invoke(context.ReadValue<Vector2>());
     }
 
+    void PlayerControls.IGameplayActions.OnPause(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+            LevelEvents.Instance.Pause.Invoke();
+    }
+
     /* Menus Event Handlers */
 
     public void OnConfirm(InputAction.CallbackContext context)
     {
         if (context.performed)
             MenuConfirmEvent.Invoke();
+    }
+
+    void PlayerControls.IMenusActions.OnResume(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+            LevelEvents.Instance.Resume.Invoke();
     }
 
     /* Enabling and Disabling */

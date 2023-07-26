@@ -13,11 +13,18 @@ public class LevelStateMachine : AbstractFiniteStateMachine
     [Tooltip("Reference to the scriptable object for level events")]
     public LevelEvents LevelEvents;
 
+    [Tooltip("Reference to the pause menu")]
+    public PauseMenu PauseMenu;
+
     public enum LevelState
     {
         IN_BATTLE,
         PAUSED
     }
+
+    /// <summary>
+    /// Register the states in the machine
+    /// </summary>
     private void Awake()
     {
         Init(LevelState.IN_BATTLE,
@@ -52,13 +59,14 @@ public class LevelStateMachine : AbstractFiniteStateMachine
         public override void OnEnter()
         {
             Time.timeScale = 0;
-
+            (this._parentStateMachine as LevelStateMachine).PauseMenu.gameObject.SetActive(true);
         }
         public override void OnUpdate()
         {
         }
         public override void OnExit()
         {
+            (this._parentStateMachine as LevelStateMachine).PauseMenu.gameObject.SetActive(false);
         }
     }
 }
