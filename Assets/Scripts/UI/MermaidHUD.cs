@@ -31,11 +31,24 @@ public class MermaidHUD : MonoBehaviour
     [Tooltip("Sprite on disk for low health image")]
     public Sprite LowHealth;
 
+    [Tooltip("Rect transform position of the status icon")]
+    public Vector2 StatusPos;
+
+    [Tooltip("Rect transform position of the hp bar")]
+    public Vector2 HPPos;
+
+    public RectTransform Status;
+
+    public RectTransform HPBar;
+
     // Start is called before the first frame update
     void Start()
     {
         this.HealthBar.maxValue = this.PlayerHealth.MaxHealth;
         this.HealthBar.value = this.PlayerHealth.Health;
+
+        this.Status.anchoredPosition = StatusPos;
+        this.HPBar.anchoredPosition = HPPos;
     }
 
     /// <summary>

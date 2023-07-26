@@ -353,7 +353,7 @@ RectTransform:
   - {fileID: 336998947131884064}
   - {fileID: 204501113787231915}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -441,3 +441,7 @@ MonoBehaviour:
   FullHealth: {fileID: 21300000, guid: 50dccd13dc90cb14c94212f124fed07e, type: 3}
   HalfHealth: {fileID: 21300000, guid: ec9c28b0fd292f642a8a27d08da48b99, type: 3}
   LowHealth: {fileID: 21300000, guid: be6dce2602e17904091749977754aaf5, type: 3}
+  StatusPos: {x: 165.56, y: -97.71509}
+  HPPos: {x: 452, y: -65}
+  Status: {fileID: 336998947131884064}
+  HPBar: {fileID: 204501113787231915}
