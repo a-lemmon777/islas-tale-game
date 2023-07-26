@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour
 
     public void GoToLevel()
     {
-        SceneManager.LoadScene("BattleArena");
+        SceneManager.LoadScene("Player Mermaid");
     }
 
 }
