@@ -86,5 +86,8 @@ public class MermaidAnimator : MonoBehaviour
     {
         _animator.ResetTrigger("Damage");
         _animator.SetTrigger("Die");
+
+        // this should be invoked on exiting the animation state
+        LevelEvents.Instance.GameOver.Invoke();
     }
 }
