@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 2557520112759883829}
   - component: {fileID: 4783705638685626141}
   - component: {fileID: -7131003749957975648}
-  - component: {fileID: 8390189169814641814}
   - component: {fileID: -257867016053858311}
   m_Layer: 3
   m_Name: Player Mermaid
@@ -158,6 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 10
+<<<<<<< HEAD
 --- !u!114 &8390189169814641814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,6 +228,8 @@ MonoBehaviour:
   m_DefaultActionMap: Gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+=======
+>>>>>>> b687b37 (Removed unused Player Input component on mermaid.)
 --- !u!114 &-257867016053858311
 MonoBehaviour:
   m_ObjectHideFlags: 0
