@@ -11,6 +11,8 @@ public class LevelEvents : ScriptableObject
 
     public UnityEvent GameOver;
 
+    public UnityEvent Victory;
+
     public static LevelEvents Instance;
 
     private void OnEnable()
@@ -18,6 +20,7 @@ public class LevelEvents : ScriptableObject
         Instance = this;
 
         GameOver.AddListener(() => SceneManager.LoadScene("GameOver"));
+        Victory.AddListener(() => SceneManager.LoadScene("Victory"));
     }
 
     private void OnDisable()

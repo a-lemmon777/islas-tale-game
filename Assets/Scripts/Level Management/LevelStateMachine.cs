@@ -32,6 +32,16 @@ public class LevelStateMachine : AbstractFiniteStateMachine
             AbstractState.Create<PausedState, LevelState>(LevelState.PAUSED, this)
         );
     }
+
+    /// <summary>
+    /// For testing purposes
+    /// </summary>
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.V))
+            LevelEvents.Victory.Invoke();
+    }
+
     public class InBattleState : AbstractState
     {
         public InBattleState()
