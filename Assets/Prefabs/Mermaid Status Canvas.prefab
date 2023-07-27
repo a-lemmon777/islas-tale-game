@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 165.56, y: -97.71509}
+  m_AnchoredPosition: {x: 165.56, y: -106.3}
   m_SizeDelta: {x: 331.12854, y: 186.26001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2553736692882479983
@@ -441,7 +441,7 @@ MonoBehaviour:
   FullHealth: {fileID: 21300000, guid: 50dccd13dc90cb14c94212f124fed07e, type: 3}
   HalfHealth: {fileID: 21300000, guid: ec9c28b0fd292f642a8a27d08da48b99, type: 3}
   LowHealth: {fileID: 21300000, guid: be6dce2602e17904091749977754aaf5, type: 3}
-  StatusPos: {x: 165.56, y: -97.71509}
+  StatusPos: {x: 165.56, y: -106.3}
   HPPos: {x: 452, y: -65}
   Status: {fileID: 336998947131884064}
   HPBar: {fileID: 204501113787231915}
