@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3150888720566314562}
   m_Layer: 7
   m_Name: Shrimp Enemy
-  m_TagString: Untagged
+  m_TagString: Enemies
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,7 +31,7 @@ Transform:
   - {fileID: 4546122873418478744}
   - {fileID: 6177041593781288750}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2474266779345672690
 GameObject:

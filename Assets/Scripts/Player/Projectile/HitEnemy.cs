@@ -19,9 +19,10 @@ public class HitEnemy : MonoBehaviour
     {
         var health = other.gameObject.GetComponentInParent<ShrimpHealth>();
 
-        health.TakeDamage(damageValue: DamageValue,
-            (_rigidbody2D.position - other.GetContact(0).point).x
-        );
+        if (health == null) return;
+
+        float damageSource = ((Vector2)transform.position - other.GetContact(0).point).x;
+        health.TakeDamage(damageValue: DamageValue, damageSource);
 
         Destroy(gameObject);
     }
