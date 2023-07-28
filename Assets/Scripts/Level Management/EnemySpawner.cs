@@ -39,6 +39,12 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
+        StartCoroutine(ActivateFirstWave());
+    }
+
+    private IEnumerator ActivateFirstWave()
+    {
+        yield return new WaitForSeconds(2f);
         WaveList[0].Activate.Invoke();
     }
 }

@@ -55,6 +55,8 @@ public class WaveManager : MonoBehaviour
         }
 
         EnemiesRemaining = Enemies.Count;
+
+        Enemies.ForEach((enemy) => enemy.SetActive(false));
     }
 
     // Update is called once per frame
