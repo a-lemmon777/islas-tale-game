@@ -1929,10 +1929,10 @@ AnimatorStateMachine:
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: 50, y: 200, z: 0}
+  m_AnyStatePosition: {x: 200, y: 10, z: 0}
   m_EntryPosition: {x: 50, y: 120, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
-  m_ParentStateMachinePosition: {x: 30, y: 60, z: 0}
+  m_ParentStateMachinePosition: {x: -20, y: 0, z: 0}
   m_DefaultState: {fileID: -6196975255579033740}
 --- !u!1109 &-367352765217671639
 AnimatorTransition:
