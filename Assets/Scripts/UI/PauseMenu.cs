@@ -17,7 +17,7 @@ public class PauseMenu : MonoBehaviour
         switch (buttonName)
         {
             case "Resume":
-                LevelStateMachine.TransitionToState(LevelStateMachine.LevelState.IN_BATTLE);
+                LevelStateMachine.LevelEvents.Resume.Invoke();
                 break;
 
             case "Options":
