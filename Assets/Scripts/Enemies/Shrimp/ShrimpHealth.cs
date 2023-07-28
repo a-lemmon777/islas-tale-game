@@ -3,6 +3,9 @@ using UnityEngine;
 [RequireComponent(typeof(ShrimpAnimator))]
 public class ShrimpHealth : CharacterHealth
 {
+    [Tooltip("Reference to the shrimp prefab root")]
+    public GameObject PrefabRoot;
+
     private ShrimpAnimator _shrimpAnimator;
 
     private void Start()

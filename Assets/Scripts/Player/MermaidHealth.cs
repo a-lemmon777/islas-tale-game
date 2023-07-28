@@ -19,9 +19,10 @@ public class MermaidHealth : CharacterHealth
         this.AnimationController.HandleDeath();
     }
 
-    public override void TakeDamage(int damageValue)
+    public void TakeDamage(int damageValue, float source)
     {
         base.TakeDamage(damageValue);
+        this.AnimationController.HandleDamage(source);
 
         this.MermaidHUD.ChangePlayerHealth(-damageValue);
     }
