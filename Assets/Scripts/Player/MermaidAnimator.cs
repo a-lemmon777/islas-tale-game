@@ -51,6 +51,7 @@ public class MermaidAnimator : MonoBehaviour
     {
         //HandleMovement(_aimDirection);
         _animator.SetBool("Is Swimming", _moveDirection != Vector2.zero);
+        _animator.SetFloat("Aim X", _aimDirection.x);
     }
 
     /// <summary>
