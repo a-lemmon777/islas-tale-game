@@ -17,6 +17,7 @@ public class MermaidAnimator : MonoBehaviour
 
     private float _nextIdleTime = 0;
     private Vector2 _aimDirection = Vector2.zero;
+    private Vector2 _moveDirection = Vector2.zero;
 
     void Awake()
     {
@@ -27,11 +28,13 @@ public class MermaidAnimator : MonoBehaviour
     private void OnEnable()
     {
         _mermaidInput.MermaidAimEvent += OnAim;
+        _mermaidInput.MermaidMoveEvent += OnMove;
     }
 
     private void OnDisable()
     {
         _mermaidInput.MermaidAimEvent -= OnAim;
+        _mermaidInput.MermaidMoveEvent -= OnMove;
     }
 
     private void OnAim(Vector2 direction)
@@ -39,9 +42,15 @@ public class MermaidAnimator : MonoBehaviour
         _aimDirection = direction;
     }
 
+    private void OnMove(Vector2 direction)
+    {
+        _moveDirection = direction;
+    }
+
     private void Update()
     {
-        HandleMovement(_aimDirection);
+        //HandleMovement(_aimDirection);
+        _animator.SetBool("Is Swimming", _moveDirection != Vector2.zero);
     }
 
     /// <summary>
@@ -69,6 +78,11 @@ public class MermaidAnimator : MonoBehaviour
         _animator.ResetTrigger("Idle");
     }
 
+    public void HandleAttack()
+    {
+        _animator.SetTrigger("Attack");
+    }
+
 
     /// <summary>
     /// Triggers the animation parameters for damage taken animations.
@@ -80,7 +94,7 @@ public class MermaidAnimator : MonoBehaviour
     public void HandleDamage(float damageSourceHorizontal)
     {
         _animator.SetFloat("Damage Source Horizontal", damageSourceHorizontal);
-        _animator.SetTrigger("Damage");
+        _animator.SetTrigger("Hurt");
     }
 
     /// <summary>
@@ -88,8 +102,13 @@ public class MermaidAnimator : MonoBehaviour
     /// </summary>
     public void HandleDeath()
     {
+<<<<<<< HEAD
         _animator.ResetTrigger("Damage");
         _animator.SetBool("Dying", true);
         _animator.SetTrigger("Die");
+=======
+        //_animator.ResetTrigger("Damage");
+        //_animator.SetTrigger("Die");
+>>>>>>> 460945e (Added an interruptible delay to the starfish throw.)
     }
 }

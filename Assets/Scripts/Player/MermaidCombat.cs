@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 /// <summary>
@@ -8,10 +9,10 @@ using UnityEngine.InputSystem;
 public class MermaidCombat : MonoBehaviour
 {
     [Tooltip("Time between starfish throws in seconds")]
-    public float StarfishCooldown = 0.2f;
+    public float StarfishCooldown = 0.333f;
 
     [Tooltip("The distance from center from which to shoot projectiles")]
-    public float ProjectileReleaseOffset = 2f;
+    public float ProjectileReleaseOffset = 1f;
 
     [Tooltip("Starfish Prefab")]
     public GameObject StarfishPrefab;
@@ -21,15 +22,22 @@ public class MermaidCombat : MonoBehaviour
     private bool _rangedAttackInputActive = false;
     private bool _rangedAttackQueued = false;
     private float _lastHorizontalInput = 1f; // Default to right
+    private Coroutine _delayedStarfishThrow;
 
     /// <summary>
     /// Reference to the mermaid input script
     /// </summary>
     private MermaidInput _mermaidInput;
 
+    /// <summary>
+    /// Reference to the mermaid animator script
+    /// </summary>
+    private MermaidAnimator _mermaidAnimator;
+
     private void Awake()
     {
         _mermaidInput = GetComponent<MermaidInput>();
+        _mermaidAnimator = GetComponentInChildren<MermaidAnimator>();
     }
 
     // This function is called when the object becomes enabled and active
@@ -69,7 +77,11 @@ public class MermaidCombat : MonoBehaviour
     private void FixedUpdate()
     {
         if (Time.time >= _nextStarfishThrowTime && (_rangedAttackInputActive || _rangedAttackQueued))
+        {
             ThrowStarfish(_attackDirection);
+            _mermaidAnimator.HandleAttack();
+        }
+
     }
 
     /// <summary>
@@ -83,9 +95,34 @@ public class MermaidCombat : MonoBehaviour
         _nextStarfishThrowTime = Time.time + StarfishCooldown;
         Vector3 throwReleaseOffset = (Vector3)(normalizedDirection * ProjectileReleaseOffset * transform.localScale.x);
         Vector3 spawnLocation = transform.position + throwReleaseOffset;
-        GameObject starfish = Instantiate(StarfishPrefab, spawnLocation, Quaternion.identity);
         if (normalizedDirection == Vector2.zero)
             normalizedDirection.x = _lastHorizontalInput;
+        StartDelayedStarfishThrow(spawnLocation, normalizedDirection, (StarfishCooldown / 2));
+    }
+
+    private void StartDelayedStarfishThrow(Vector3 spawnLocation, Vector2 normalizedDirection, float delay)
+    {
+        if (_delayedStarfishThrow != null)
+            StopCoroutine(_delayedStarfishThrow);
+
+        _delayedStarfishThrow = StartCoroutine(DelayedStarfishThrow(spawnLocation, normalizedDirection, delay));
+    }
+
+    private IEnumerator DelayedStarfishThrow(Vector3 spawnLocation, Vector2 normalizedDirection, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        ReleaseStarfish(spawnLocation, normalizedDirection);
+    }
+
+    private void InterruptDelayedStarfishThrow()
+    {
+        if (_delayedStarfishThrow != null)
+            StopCoroutine(_delayedStarfishThrow);
+    }
+
+    private void ReleaseStarfish(Vector3 spawnLocation, Vector2 normalizedDirection)
+    {
+        GameObject starfish = Instantiate(StarfishPrefab, spawnLocation, Quaternion.identity);
         starfish.GetComponent<StarfishController>().SetDirection(normalizedDirection);
     }
 }
