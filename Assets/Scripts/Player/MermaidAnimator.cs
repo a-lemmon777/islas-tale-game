@@ -102,13 +102,8 @@ public class MermaidAnimator : MonoBehaviour
     /// </summary>
     public void HandleDeath()
     {
-<<<<<<< HEAD
         _animator.ResetTrigger("Damage");
         _animator.SetBool("Dying", true);
         _animator.SetTrigger("Die");
-=======
-        //_animator.ResetTrigger("Damage");
-        //_animator.SetTrigger("Die");
->>>>>>> 460945e (Added an interruptible delay to the starfish throw.)
     }
 }

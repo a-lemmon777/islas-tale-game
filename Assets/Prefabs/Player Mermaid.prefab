@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2557520112759883829}
   - component: {fileID: 4783705638685626141}
   - component: {fileID: -7131003749957975648}
+  - component: {fileID: 8390189169814641814}
   - component: {fileID: -257867016053858311}
   m_Layer: 3
   m_Name: Player Mermaid
@@ -99,7 +100,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.1, y: 3.3}
+  m_Size: {x: 1.6, y: 3.8}
   m_Direction: 0
 --- !u!114 &5318723798107836790
 MonoBehaviour:
@@ -141,8 +142,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52e8a6c69ead1134ca778e0593a6d23f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StarfishCooldown: 0.333
-  ProjectileReleaseOffset: 1
+  StarfishCooldown: 0.2
+  ProjectileReleaseOffset: 2
   StarfishPrefab: {fileID: 3063775364242472600, guid: 06f415e451f6d22409146c2972626ee7, type: 3}
 --- !u!114 &-7131003749957975648
 MonoBehaviour:
@@ -157,7 +158,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 10
-<<<<<<< HEAD
 --- !u!114 &8390189169814641814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,8 +228,6 @@ MonoBehaviour:
   m_DefaultActionMap: Gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
-=======
->>>>>>> b687b37 (Removed unused Player Input component on mermaid.)
 --- !u!114 &-257867016053858311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,7 +316,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6d6fb30b3785706498776590a1b8d4cb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: feef796eb32a0cb48a705aa05ef3d26b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -339,7 +337,7 @@ Animator:
   m_GameObject: {fileID: 8312327655263705777}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 23afef0cf9550574397d266c031ad83e, type: 2}
+  m_Controller: {fileID: 9100000, guid: eeb1e26a7db3bcb4ebd46bc495bb878a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
