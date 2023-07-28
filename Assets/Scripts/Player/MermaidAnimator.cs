@@ -104,8 +104,6 @@ public class MermaidAnimator : MonoBehaviour
     /// </summary>
     public void HandleDeath()
     {
-        _animator.ResetTrigger("Damage");
-        _animator.SetBool("Dying", true);
-        _animator.SetTrigger("Die");
+        _animator.SetBool("Is Dying", true);
     }
 }
