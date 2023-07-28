@@ -11,6 +11,10 @@ public class MermaidAnimator : MonoBehaviour
 
     [Tooltip("How long it takes to start the neutral idling in seconds")]
     public float TimeToIdle = 2;
+
+    [Tooltip("Scriptable object for level events")]
+    public LevelEvents LevelEvents;
+
     private float _nextIdleTime = 0;
     private Vector2 _aimDirection = Vector2.zero;
 
@@ -85,9 +89,7 @@ public class MermaidAnimator : MonoBehaviour
     public void HandleDeath()
     {
         _animator.ResetTrigger("Damage");
+        _animator.SetBool("Dying", true);
         _animator.SetTrigger("Die");
-
-        // this should be invoked on exiting the animation state
-        LevelEvents.Instance.GameOver.Invoke();
     }
 }

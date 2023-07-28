@@ -361,3 +361,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimeToIdle: 2
+  LevelEvents: {fileID: 11400000, guid: 94e19117b6be12c45ba686ff7fd887fd, type: 2}
