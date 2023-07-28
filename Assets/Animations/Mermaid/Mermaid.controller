@@ -664,7 +664,7 @@ AnimatorStateMachine:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Swim
+    m_ConditionEvent: Is Swimming
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: -1191726167010413901}
   m_DstState: {fileID: 0}
@@ -897,10 +897,7 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: Swim Exit
-    m_EventTreshold: 0
+  m_Conditions: []
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 0}
   m_Solo: 0
@@ -910,7 +907,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_ExitTime: 0
-  m_HasExitTime: 0
+  m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -1327,7 +1324,7 @@ AnimatorTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Swim
+    m_ConditionEvent: Is Swimming
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: -1191726167010413901}
   m_DstState: {fileID: 0}
@@ -1376,7 +1373,7 @@ AnimatorStateTransition:
   serializedVersion: 3
   m_TransitionDuration: 0
   m_TransitionOffset: 0
-  m_ExitTime: 1
+  m_ExitTime: 0
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -1391,7 +1388,7 @@ AnimatorTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Swim
+    m_ConditionEvent: Is Swimming
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: -1191726167010413901}
   m_DstState: {fileID: 0}
@@ -2006,6 +2003,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
+  - m_Name: Is Swimming
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   - m_Name: Go Next
     m_Type: 9
     m_DefaultFloat: 0
@@ -2323,40 +2326,40 @@ AnimatorStateMachine:
   - {fileID: -8739503823450295508}
   m_EntryTransitions: []
   m_StateMachineTransitions:
-  - first: {fileID: -443336359889443181}
+  - first: {fileID: 183641247152199419}
+    second: []
+  - first: {fileID: -677718711030652794}
+    second: []
+  - first: {fileID: -716434448928559015}
     second:
-    - {fileID: -4542244751979190980}
-    - {fileID: 7281887343892668373}
-    - {fileID: -2641288252118309496}
-    - {fileID: -4100195090633457019}
-  - first: {fileID: -4527818381373774302}
+    - {fileID: -568911434427301120}
+  - first: {fileID: -1316379111099195432}
     second:
-    - {fileID: -4684082348043712778}
-    - {fileID: -367352765217671639}
-    - {fileID: 3940502181810149501}
-    - {fileID: -513451212769630244}
-  - first: {fileID: -1191726167010413901}
-    second:
-    - {fileID: 6156304449129570890}
-    - {fileID: -6763462957231545095}
-    - {fileID: -6072343305971422204}
-    - {fileID: -871753042991349091}
+    - {fileID: -1817868563814478110}
   - first: {fileID: -4972384144547717367}
     second:
     - {fileID: 1506871063329808499}
     - {fileID: 8675506312626911286}
     - {fileID: -2107481824675825450}
     - {fileID: -3491290814457205241}
-  - first: {fileID: -1316379111099195432}
+  - first: {fileID: -1191726167010413901}
     second:
-    - {fileID: -1817868563814478110}
-  - first: {fileID: -716434448928559015}
+    - {fileID: 6156304449129570890}
+    - {fileID: -6763462957231545095}
+    - {fileID: -6072343305971422204}
+    - {fileID: -871753042991349091}
+  - first: {fileID: -4527818381373774302}
     second:
-    - {fileID: -568911434427301120}
-  - first: {fileID: 183641247152199419}
-    second: []
-  - first: {fileID: -677718711030652794}
-    second: []
+    - {fileID: -4684082348043712778}
+    - {fileID: -367352765217671639}
+    - {fileID: 3940502181810149501}
+    - {fileID: -513451212769630244}
+  - first: {fileID: -443336359889443181}
+    second:
+    - {fileID: -4542244751979190980}
+    - {fileID: 7281887343892668373}
+    - {fileID: -2641288252118309496}
+    - {fileID: -4100195090633457019}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 550, y: 90, z: 0}
   m_EntryPosition: {x: -150, y: -500, z: 0}
@@ -2905,7 +2908,7 @@ AnimatorTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Swim
+    m_ConditionEvent: Is Swimming
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: -1191726167010413901}
   m_DstState: {fileID: 0}
