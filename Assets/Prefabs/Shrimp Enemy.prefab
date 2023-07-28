@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3150888720566314562}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shrimp Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,7 +48,8 @@ GameObject:
   - component: {fileID: 7430090946755638391}
   - component: {fileID: 4718369574450353398}
   - component: {fileID: 1756635384423341092}
-  m_Layer: 0
+  - component: {fileID: 1838894602939110643}
+  m_Layer: 7
   m_Name: Shrimp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,6 +179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 2
   Health: 2
+  PrefabRoot: {fileID: 1682477695393711541}
 --- !u!95 &4718369574450353398
 Animator:
   serializedVersion: 5
@@ -211,6 +213,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e745e46e1d4711046bbb3d39ebe8da50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1838894602939110643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2474266779345672690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ac77f2b9fbba184e86417427a46b233, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamageValue: 1
+  Cooldown: 1
 --- !u!1 &5617366960630185564
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,7 +237,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4453702445168962339}
   - component: {fileID: 1809018594174009624}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -289,7 +305,7 @@ GameObject:
   - component: {fileID: 4546122873418478744}
   - component: {fileID: 4300063104499277222}
   - component: {fileID: 4311513006799085807}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destination
   m_TagString: Untagged
   m_Icon: {fileID: 0}
