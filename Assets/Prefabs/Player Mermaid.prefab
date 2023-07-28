@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: -7131003749957975648}
   - component: {fileID: 8390189169814641814}
   - component: {fileID: -257867016053858311}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player Mermaid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,9 +157,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StarfishCooldown: 0.2
-  ThrowReleaseOffset: 2
+  ProjectileReleaseOffset: 2
   StarfishPrefab: {fileID: 3063775364242472600, guid: 06f415e451f6d22409146c2972626ee7, type: 3}
-  Inputs: {fileID: 11400000, guid: 36c858acf03867d4c82993f1b9b67fa8, type: 2}
 --- !u!114 &-7131003749957975648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,6 +229,14 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: fe770f64-0f5e-490e-90a6-7a01aa4f1a0b
     m_ActionName: Menus/Confirm[/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b32ec5e0-5523-4e95-af64-d130538ff311
+    m_ActionName: Gameplay/Pause[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ad004ffa-a173-4d64-a9b1-73f64ef7ae21
+    m_ActionName: Menus/Resume[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
@@ -260,7 +267,7 @@ GameObject:
   - component: {fileID: 3691599110689432490}
   - component: {fileID: 7384680680870782412}
   - component: {fileID: 3391367493163675675}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Art
   m_TagString: Untagged
   m_Icon: {fileID: 0}
