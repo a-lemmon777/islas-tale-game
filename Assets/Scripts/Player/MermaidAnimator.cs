@@ -8,6 +8,7 @@ public class MermaidAnimator : MonoBehaviour
     /// </summary>
     private Animator _animator;
     private MermaidInput _mermaidInput;
+    private MermaidCombat _mermaidCombat;
 
     [Tooltip("How long it takes to start the neutral idling in seconds")]
     public float TimeToIdle = 2;
@@ -23,6 +24,7 @@ public class MermaidAnimator : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _mermaidInput = GetComponentInParent<MermaidInput>();
+        _mermaidCombat = GetComponentInParent<MermaidCombat>();
     }
 
     private void OnEnable()
@@ -39,7 +41,8 @@ public class MermaidAnimator : MonoBehaviour
 
     private void OnAim(Vector2 direction)
     {
-        _aimDirection = direction;
+        if (direction !=  Vector2.zero)
+            _aimDirection = direction;
     }
 
     private void OnMove(Vector2 direction)
@@ -106,5 +109,10 @@ public class MermaidAnimator : MonoBehaviour
     public void HandleDeath()
     {
         _animator.SetBool("Is Dying", true);
+    }
+
+    public void ThrowStarfish()
+    {
+        _mermaidCombat.ThrowStarfish();
     }
 }

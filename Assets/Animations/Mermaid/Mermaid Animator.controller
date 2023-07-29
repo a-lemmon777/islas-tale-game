@@ -591,7 +591,7 @@ AnimatorState:
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
-  m_TimeParameter: 
+  m_TimeParameter: Horizontal Velocity
 --- !u!1109 &-4684082348043712778
 AnimatorTransition:
   m_ObjectHideFlags: 1
@@ -1519,9 +1519,9 @@ AnimatorStateMachine:
   - first: {fileID: -4527818381373774302}
     second:
     - {fileID: -4684082348043712778}
+    - {fileID: 3957796785694918372}
     - {fileID: 3940502181810149501}
     - {fileID: -513451212769630244}
-    - {fileID: 3957796785694918372}
   - first: {fileID: -443336359889443181}
     second:
     - {fileID: -4542244751979190980}

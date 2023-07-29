@@ -1050,6 +1050,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Mermaid
       objectReference: {fileID: 0}
+    - target: {fileID: 4783705638685626141, guid: 805eb4301fd39da46b0b4df1f3bdcb87, type: 3}
+      propertyPath: StarfishCooldown
+      value: 0.32
+      objectReference: {fileID: 0}
     - target: {fileID: 5318723798107836790, guid: 805eb4301fd39da46b0b4df1f3bdcb87, type: 3}
       propertyPath: MermaidHUD
       value: 
@@ -1140,7 +1144,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 00000000b960c75d
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
