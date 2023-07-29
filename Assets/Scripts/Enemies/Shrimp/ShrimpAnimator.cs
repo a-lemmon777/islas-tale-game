@@ -30,4 +30,13 @@ public class ShrimpAnimator : MonoBehaviour
         _animator.ResetTrigger("Damage");
         _animator.SetTrigger("Die");
     }
+
+
+    /// <summary>
+    /// Turns the shrimp into powered mode
+    /// </summary>
+    public void HandlePower()
+    {
+        _animator.SetBool("Powered Up", true);
+    }
 }

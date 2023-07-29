@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(ShrimpAnimator))]
 public class ShrimpHealth : CharacterHealth
@@ -6,10 +7,22 @@ public class ShrimpHealth : CharacterHealth
     [Tooltip("Reference to the shrimp prefab root")]
     public GameObject PrefabRoot;
 
+    [HideInInspector]
+    public UnityEvent PowerUp;
+
     [Tooltip("Reference to the wave manager of this enemy")]
     private WaveManager _partOfWave;
 
     private ShrimpAnimator _shrimpAnimator;
+
+    private void Awake()
+    {
+        PowerUp.AddListener(() =>
+        {
+            Heal(MaxHealth);
+            _shrimpAnimator.HandlePower();
+        });
+    }
 
     private void Start()
     {
