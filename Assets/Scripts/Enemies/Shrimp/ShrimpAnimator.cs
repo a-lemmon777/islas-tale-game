@@ -29,6 +29,7 @@ public class ShrimpAnimator : MonoBehaviour
     {
         _animator.ResetTrigger("Damage");
         _animator.SetTrigger("Die");
+        _animator.SetBool("Alive", false);
     }
 
 
@@ -37,6 +38,7 @@ public class ShrimpAnimator : MonoBehaviour
     /// </summary>
     public void HandlePower()
     {
-        _animator.SetBool("Powered Up", true);
+        _animator.SetTrigger("Power Up");
+        _animator.SetBool("Alive", true);
     }
 }
