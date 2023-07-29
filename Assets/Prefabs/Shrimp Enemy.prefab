@@ -165,6 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Destination: {fileID: 4546122873418478744}
   Speed: 5
+  PoweredSpeed: 7.5
 --- !u!114 &7430090946755638391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,6 +181,9 @@ MonoBehaviour:
   MaxHealth: 2
   Health: 2
   PrefabRoot: {fileID: 1682477695393711541}
+  PowerUp:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!95 &4718369574450353398
 Animator:
   serializedVersion: 5
