@@ -12,14 +12,17 @@ public class WaveManager : MonoBehaviour
     [Tooltip("Reference to the enemy spawner")]
     public EnemySpawner EnemySpawner;
 
-    [Tooltip("When the wave activates")]
+    [Tooltip("When the wave activates"), HideInInspector]
     public UnityEvent Activate;
 
-    [Tooltip("When an enemy of this wave dies")]
+    [Tooltip("When an enemy of this wave dies"), HideInInspector]
     public UnityEvent EnemyDown;
 
     [Tooltip("List of enemy prefab roots belonging to this wave")]
     public List<GameObject> Enemies = new List<GameObject>();
+
+    [Tooltip("List of obstacles")]
+    public List<GameObject> Obstacles = new List<GameObject>();
 
     [Tooltip("How many enemies are left")]
     public int EnemiesRemaining;
@@ -29,6 +32,7 @@ public class WaveManager : MonoBehaviour
         Activate.AddListener(() =>
         {
             Enemies.ForEach((enemy) => enemy.SetActive(true));
+            Obstacles.ForEach((obstacle) => obstacle.SetActive(true));
         });
 
         EnemyDown.AddListener(() =>
@@ -52,16 +56,19 @@ public class WaveManager : MonoBehaviour
         {
             if (child.tag == "Enemies")
                 Enemies.Add(child.gameObject);
+
+            if (child.tag == "Obstacles")
+                Obstacles.Add(child.gameObject);
         }
 
         EnemiesRemaining = Enemies.Count;
 
         Enemies.ForEach((enemy) => enemy.SetActive(false));
+        Obstacles.ForEach((obstacle) => obstacle.SetActive(false));
     }
 
     // Update is called once per frame
     void Update()
     {
-
     }
 }

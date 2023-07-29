@@ -16,7 +16,7 @@ public class ObstacleMover : MonoBehaviour
 
     private Rigidbody2D _rigidbody2D;
 
-    private void Start()
+    private void OnEnable()
     {
         this._rigidbody2D = GetComponent<Rigidbody2D>();
 

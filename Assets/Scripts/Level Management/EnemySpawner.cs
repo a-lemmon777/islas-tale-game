@@ -14,7 +14,7 @@ public class EnemySpawner : MonoBehaviour
     [Tooltip("The current wave number")]
     public int CurrentWave = 0;
 
-    [Tooltip("When the current wave ends")]
+    [Tooltip("When the current wave ends"), HideInInspector]
     public UnityEvent WaveCompleted;
 
     private void Awake()

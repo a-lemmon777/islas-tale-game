@@ -31,7 +31,11 @@ public class ShrimpMover : MonoBehaviour
         this._shrimpAnimator = GetComponent<ShrimpAnimator>();
         this._shrimpHealth = GetComponent<ShrimpHealth>();
 
-        _shrimpHealth.PowerUp.AddListener(() => _isPoweredUp = true);
+        _shrimpHealth.PowerUp.AddListener(() =>
+        {
+            _isPoweredUp = true;
+            KickInRandomDirection();
+        });
     }
 
     // Update is called once per frame
@@ -45,16 +49,6 @@ public class ShrimpMover : MonoBehaviour
 
     private void GoBounceAround()
     {
-        // if the shrimp has stopped moving, kick it in a random direction
-        if (_rigidbody2D.velocity == Vector2.zero)
-        {
-            Random.InitState((int)Time.realtimeSinceStartup);
-            var x = Random.Range(-1, 1);
-            var y = Random.Range(-1, 1);
-
-            _rigidbody2D.velocity = new Vector2(x, y).normalized * PoweredSpeed;
-        }
-
         var currentViewport = Camera.main.WorldToViewportPoint(transform.position);
 
         // vertical walls of the screen
@@ -68,6 +62,14 @@ public class ShrimpMover : MonoBehaviour
         {
             _rigidbody2D.velocity *= new Vector2(1, -1);
         }
+    }
+
+    private void KickInRandomDirection()
+    {
+        // kick it in a random direction
+        Random.InitState(System.DateTime.Now.Second);
+        _rigidbody2D.velocity = Random.insideUnitCircle.normalized * PoweredSpeed;
+
     }
 
     private void GoToDestination()

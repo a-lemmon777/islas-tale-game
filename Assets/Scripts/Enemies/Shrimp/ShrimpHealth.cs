@@ -7,6 +7,7 @@ public class ShrimpHealth : CharacterHealth
     [Tooltip("Reference to the shrimp prefab root")]
     public GameObject PrefabRoot;
 
+    [HideInInspector]
     public UnityEvent PowerUp;
 
     [Tooltip("Reference to the wave manager of this enemy")]
