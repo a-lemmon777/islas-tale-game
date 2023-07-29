@@ -30,7 +30,11 @@ public class MermaidHealth : CharacterHealth
     {
         // Only play hurt sound if mermaid will not die.
         if (this.Health > damageValue)
+        {
+            HurtSound.time = 0.25f;
             HurtSound.Play();
+        }
+
         base.TakeDamage(damageValue);
         this.AnimationController.HandleDamage(source);
 
