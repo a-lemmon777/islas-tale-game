@@ -14,7 +14,7 @@ public class Credits : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(FadeIntoScene(5f));
+        StartCoroutine(FadeIntoScene(1f));
     }
 
     private IEnumerator FadeIntoScene(float delay)
