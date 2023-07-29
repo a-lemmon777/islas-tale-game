@@ -8,6 +8,7 @@ public class MermaidAnimator : MonoBehaviour
     /// </summary>
     private Animator _animator;
     private MermaidInput _mermaidInput;
+    private MermaidCombat _mermaidCombat;
 
     [Tooltip("How long it takes to start the neutral idling in seconds")]
     public float TimeToIdle = 2;
@@ -17,31 +18,45 @@ public class MermaidAnimator : MonoBehaviour
 
     private float _nextIdleTime = 0;
     private Vector2 _aimDirection = Vector2.zero;
+    private Vector2 _moveDirection = Vector2.zero;
 
     void Awake()
     {
         _animator = GetComponent<Animator>();
         _mermaidInput = GetComponentInParent<MermaidInput>();
+        _mermaidCombat = GetComponentInParent<MermaidCombat>();
     }
 
     private void OnEnable()
     {
         _mermaidInput.MermaidAimEvent += OnAim;
+        _mermaidInput.MermaidMoveEvent += OnMove;
     }
 
     private void OnDisable()
     {
         _mermaidInput.MermaidAimEvent -= OnAim;
+        _mermaidInput.MermaidMoveEvent -= OnMove;
     }
 
     private void OnAim(Vector2 direction)
     {
-        _aimDirection = direction;
+        if (direction !=  Vector2.zero)
+            _aimDirection = direction;
+    }
+
+    private void OnMove(Vector2 direction)
+    {
+        _moveDirection = direction;
     }
 
     private void Update()
     {
-        HandleMovement(_aimDirection);
+        //HandleMovement(_aimDirection);
+        _animator.SetBool("Is Swimming", _moveDirection != Vector2.zero);
+        _animator.SetFloat("Horizontal Velocity", _moveDirection.x);
+        _animator.SetFloat("Aim X", _aimDirection.x);
+        _animator.SetFloat("Aim Y", _aimDirection.y);
     }
 
     /// <summary>
@@ -69,6 +84,11 @@ public class MermaidAnimator : MonoBehaviour
         _animator.ResetTrigger("Idle");
     }
 
+    public void HandleAttack()
+    {
+        _animator.SetTrigger("Attack");
+    }
+
 
     /// <summary>
     /// Triggers the animation parameters for damage taken animations.
@@ -80,7 +100,7 @@ public class MermaidAnimator : MonoBehaviour
     public void HandleDamage(float damageSourceHorizontal)
     {
         _animator.SetFloat("Damage Source Horizontal", damageSourceHorizontal);
-        _animator.SetTrigger("Damage");
+        _animator.SetTrigger("Hurt");
     }
 
     /// <summary>
@@ -88,8 +108,11 @@ public class MermaidAnimator : MonoBehaviour
     /// </summary>
     public void HandleDeath()
     {
-        _animator.ResetTrigger("Damage");
-        _animator.SetBool("Dying", true);
-        _animator.SetTrigger("Die");
+        _animator.SetBool("Is Dying", true);
+    }
+
+    public void ThrowStarfish()
+    {
+        _mermaidCombat.ThrowStarfish();
     }
 }
