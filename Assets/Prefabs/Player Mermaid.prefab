@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2623236400860764829}
   - component: {fileID: 594513264201488557}
   - component: {fileID: 5318723798107836790}
-  - component: {fileID: 2557520112759883829}
   - component: {fileID: 4783705638685626141}
   - component: {fileID: -7131003749957975648}
   - component: {fileID: -257867016053858311}
@@ -117,18 +116,6 @@ MonoBehaviour:
   Health: 5
   AnimationController: {fileID: 3391367493163675675}
   MermaidHUD: {fileID: 0}
---- !u!114 &2557520112759883829
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 329315263273244811}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31565172fc61bba42b8b85b3141b651a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4783705638685626141
 MonoBehaviour:
   m_ObjectHideFlags: 0
