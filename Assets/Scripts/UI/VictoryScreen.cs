@@ -13,6 +13,7 @@ public class VictoryScreen : MonoBehaviour
                 SceneManager.LoadScene("MainMenu");
                 break;
             case "Credits":
+                SceneManager.LoadScene("Credits");
                 break;
             default:
                 break;
