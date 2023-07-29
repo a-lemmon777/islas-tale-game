@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +11,9 @@ public class MermaidHealth : CharacterHealth
     [Tooltip("Reference to the player status UI script component")]
     public MermaidHUD MermaidHUD;
 
+    [Tooltip("Reference to the hurt sound effect")]
+    public AudioSource HurtSound;
+
     /// <summary>
     /// Handles all the callbacks when the player dies
     /// </summary>
@@ -21,6 +24,7 @@ public class MermaidHealth : CharacterHealth
 
     public void TakeDamage(int damageValue, float source)
     {
+        HurtSound.Play();
         base.TakeDamage(damageValue);
         this.AnimationController.HandleDamage(source);
 
