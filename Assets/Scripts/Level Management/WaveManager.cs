@@ -1,0 +1,67 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+
+/// <summary>
+/// To use this properly, all the enemy prefab instances must be children of
+/// this game object.
+/// </summary>
+public class WaveManager : MonoBehaviour
+{
+    [Tooltip("Reference to the enemy spawner")]
+    public EnemySpawner EnemySpawner;
+
+    [Tooltip("When the wave activates")]
+    public UnityEvent Activate;
+
+    [Tooltip("When an enemy of this wave dies")]
+    public UnityEvent EnemyDown;
+
+    [Tooltip("List of enemy prefab roots belonging to this wave")]
+    public List<GameObject> Enemies = new List<GameObject>();
+
+    [Tooltip("How many enemies are left")]
+    public int EnemiesRemaining;
+
+    void Awake()
+    {
+        Activate.AddListener(() =>
+        {
+            Enemies.ForEach((enemy) => enemy.SetActive(true));
+        });
+
+        EnemyDown.AddListener(() =>
+        {
+            EnemiesRemaining--;
+
+            if (EnemiesRemaining == 0) EnemySpawner.WaveCompleted.Invoke();
+        });
+    }
+
+    void OnDisable()
+    {
+        Activate.RemoveAllListeners();
+        EnemyDown.RemoveAllListeners();
+    }
+
+    void Start()
+    {
+        // find all the enemy prefab roots that are children of this game object
+        foreach (Transform child in transform)
+        {
+            if (child.tag == "Enemies")
+                Enemies.Add(child.gameObject);
+        }
+
+        EnemiesRemaining = Enemies.Count;
+
+        Enemies.ForEach((enemy) => enemy.SetActive(false));
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+}

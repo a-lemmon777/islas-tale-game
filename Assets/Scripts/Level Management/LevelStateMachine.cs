@@ -33,14 +33,6 @@ public class LevelStateMachine : AbstractFiniteStateMachine
         );
     }
 
-    /// <summary>
-    /// For testing purposes
-    /// </summary>
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.V))
-            LevelEvents.Victory.Invoke();
-    }
 
     public class InBattleState : AbstractState
     {

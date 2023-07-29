@@ -6,11 +6,15 @@ public class ShrimpHealth : CharacterHealth
     [Tooltip("Reference to the shrimp prefab root")]
     public GameObject PrefabRoot;
 
+    [Tooltip("Reference to the wave manager of this enemy")]
+    private WaveManager _partOfWave;
+
     private ShrimpAnimator _shrimpAnimator;
 
     private void Start()
     {
         _shrimpAnimator = GetComponent<ShrimpAnimator>();
+        _partOfWave = GetComponentInParent<WaveManager>();
     }
 
     /// <summary>
@@ -33,5 +37,10 @@ public class ShrimpHealth : CharacterHealth
     public override void Die()
     {
         _shrimpAnimator.HandleDeath();
+    }
+
+    private void OnDestroy()
+    {
+        _partOfWave.EnemyDown.Invoke();
     }
 }
