@@ -20,17 +20,8 @@ public class ObstacleMover : MonoBehaviour
     {
         this._rigidbody2D = GetComponent<Rigidbody2D>();
 
+        _rigidbody2D.velocity = ((Vector2)Destination.position - _rigidbody2D.position).normalized * Speed;
+
         Destroy(gameObject, LifeTime);
     }
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        float distanceLeft = Vector2.Distance(Destination.position, _rigidbody2D.position);
-
-        _rigidbody2D.velocity =
-            ((Vector2)Destination.position - _rigidbody2D.position).normalized * Speed
-        ;
-    }
-
 }

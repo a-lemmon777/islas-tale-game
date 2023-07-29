@@ -17,7 +17,6 @@ public class CollideShrimp : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log(other);
         var health = other.gameObject.GetComponentInParent<ShrimpHealth>();
 
         if (health == null) return;

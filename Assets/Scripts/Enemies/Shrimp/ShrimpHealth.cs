@@ -19,6 +19,7 @@ public class ShrimpHealth : CharacterHealth
         PowerUp.AddListener(() =>
         {
             Heal(MaxHealth);
+            _shrimpAnimator.HandlePower();
         });
     }
 
