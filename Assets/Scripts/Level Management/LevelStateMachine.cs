@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using KevinCastejon.FiniteStateMachine;
@@ -15,6 +15,9 @@ public class LevelStateMachine : AbstractFiniteStateMachine
 
     [Tooltip("Reference to the pause menu")]
     public PauseMenu PauseMenu;
+
+    [Tooltip("Reference to the pause sound effect")]
+    public AudioSource PauseSound;
 
     public enum LevelState
     {
@@ -60,6 +63,7 @@ public class LevelStateMachine : AbstractFiniteStateMachine
 
         public override void OnEnter()
         {
+            (this._parentStateMachine as LevelStateMachine).PauseSound.Play();
             Time.timeScale = 0;
             (this._parentStateMachine as LevelStateMachine).PauseMenu.gameObject.SetActive(true);
         }
@@ -68,6 +72,7 @@ public class LevelStateMachine : AbstractFiniteStateMachine
         }
         public override void OnExit()
         {
+            (this._parentStateMachine as LevelStateMachine).PauseSound.Play();
             (this._parentStateMachine as LevelStateMachine).PauseMenu.gameObject.SetActive(false);
         }
     }
