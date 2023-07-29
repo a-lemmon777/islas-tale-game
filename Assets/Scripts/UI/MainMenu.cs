@@ -6,9 +6,23 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
 
-    public void GoToLevel()
+    /// <summary>
+    /// Callback function for button clicks
+    /// </summary>
+    /// <param name="buttonName">Name of the button</param>
+    public void ClickButton(string buttonName)
     {
-        SceneManager.LoadScene("Player Mermaid");
+        switch (buttonName)
+        {
+            case "Start":
+                SceneManager.LoadScene("Player Mermaid");
+                break;
+            case "Credits":
+                SceneManager.LoadScene("Credits");
+                break;
+            default:
+                break;
+        }
     }
 
 }
