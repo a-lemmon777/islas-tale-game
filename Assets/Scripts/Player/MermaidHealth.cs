@@ -14,17 +14,23 @@ public class MermaidHealth : CharacterHealth
     [Tooltip("Reference to the hurt sound effect")]
     public AudioSource HurtSound;
 
+    [Tooltip("Reference to the die sound effect")]
+    public AudioSource DieSound;
+
     /// <summary>
     /// Handles all the callbacks when the player dies
     /// </summary>
     public override void Die()
     {
+        DieSound.Play();
         this.AnimationController.HandleDeath();
     }
 
     public void TakeDamage(int damageValue, float source)
     {
-        HurtSound.Play();
+        // Only play hurt sound if mermaid will not die.
+        if (this.Health > damageValue)
+            HurtSound.Play();
         base.TakeDamage(damageValue);
         this.AnimationController.HandleDamage(source);
 
