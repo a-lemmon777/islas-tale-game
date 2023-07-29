@@ -22,7 +22,6 @@ public class MermaidCombat : MonoBehaviour
     private bool _rangedAttackInputActive = false;
     private bool _rangedAttackQueued = false;
     private float _lastHorizontalInput = 1f; // Default to right
-    private Coroutine _delayedStarfishThrow;
 
     /// <summary>
     /// Reference to the mermaid input script
