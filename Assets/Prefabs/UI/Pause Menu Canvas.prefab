@@ -1540,4 +1540,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ece1781e611ecc44e9cbcc0e7f708d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelStateMachine: {fileID: 0}
+  LevelEvents: {fileID: 11400000, guid: 94e19117b6be12c45ba686ff7fd887fd, type: 2}
