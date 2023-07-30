@@ -38,7 +38,11 @@ public class WaveManager : MonoBehaviour
         {
             EnemiesRemaining--;
 
-            if (EnemiesRemaining == 0) EnemySpawner.WaveCompleted.Invoke();
+            if (EnemiesRemaining == 0)
+            {
+                Barrels.ForEach((barrel) => barrel.Deactivate.Invoke());
+                EnemySpawner.WaveCompleted.Invoke();
+            }
         });
 
         // find all the enemy prefab roots that are children of this game object
@@ -98,13 +102,4 @@ public class WaveManager : MonoBehaviour
         EnemyDown.RemoveAllListeners();
     }
 
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
 }

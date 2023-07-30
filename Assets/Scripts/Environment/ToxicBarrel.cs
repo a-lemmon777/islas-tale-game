@@ -23,7 +23,17 @@ public class ToxicBarrel : MonoBehaviour
     [Tooltip("How fast should the barrel wind up, relative to one second")]
     public float WindUpSpeedMultiplier;
 
+    public UnityEvent Deactivate;
+
     private Animator _animator;
+
+    void Awake()
+    {
+        Deactivate.AddListener(() =>
+        {
+            _animator.SetTrigger("Deactivate");
+        });
+    }
 
     void Start()
     {
