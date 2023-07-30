@@ -7,9 +7,12 @@ public class CollideShrimp : MonoBehaviour
 {
     private Rigidbody2D _rigidbody2D;
 
+    private GameObject _parent;
+
     void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        _parent = GetComponentInParent<ObstacleDelay>().gameObject;
     }
 
     void OnCollisionEnter2D(Collision2D other)
@@ -20,6 +23,6 @@ public class CollideShrimp : MonoBehaviour
 
         health.PowerUp.Invoke();
 
-        Destroy(gameObject);
+        Destroy(_parent);
     }
 }

@@ -11,6 +11,7 @@ public class ShrimpGlow : MonoBehaviour
 
     void Start()
     {
+        // renderer is disabled by default
         _spriteRenderer = GetComponent<SpriteRenderer>();
 
 
