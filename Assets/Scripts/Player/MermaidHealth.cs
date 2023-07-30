@@ -24,6 +24,7 @@ public class MermaidHealth : CharacterHealth
     {
         GameObject.Find("MusicManager").GetComponent<AudioSource>().Pause();
         DieSound.Play();
+        GetComponent<Collider2D>().enabled = false;
         this.AnimationController.HandleDeath();
     }
 
