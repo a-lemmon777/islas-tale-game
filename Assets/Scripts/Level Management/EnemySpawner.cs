@@ -21,6 +21,12 @@ public class EnemySpawner : MonoBehaviour
     {
         WaveCompleted.AddListener(() =>
         {
+            // clean up all the stars
+            foreach (var star in GameObject.FindObjectsOfType<StarfishController>())
+            {
+                Destroy(star.gameObject);
+            }
+
             if (CurrentWave == WaveList.Count - 1)
             {
                 LevelEvents.Victory.Invoke();

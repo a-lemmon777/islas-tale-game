@@ -19,21 +19,17 @@ public class WaveManager : MonoBehaviour
     public UnityEvent EnemyDown;
 
     [Tooltip("List of enemy prefab roots belonging to this wave")]
-    public List<GameObject> Enemies = new List<GameObject>();
+    public List<ShrimpSpawner> Enemies = new List<ShrimpSpawner>();
 
     [Tooltip("List of obstacles")]
-    public List<GameObject> Obstacles = new List<GameObject>();
+    public List<ObstacleDelay> Obstacles = new List<ObstacleDelay>();
 
     [Tooltip("How many enemies are left")]
     public int EnemiesRemaining;
 
     void Awake()
     {
-        Activate.AddListener(() =>
-        {
-            Enemies.ForEach((enemy) => enemy.SetActive(true));
-            Obstacles.ForEach((obstacle) => obstacle.SetActive(true));
-        });
+        Activate.AddListener(Spawn);
 
         EnemyDown.AddListener(() =>
         {
@@ -41,6 +37,41 @@ public class WaveManager : MonoBehaviour
 
             if (EnemiesRemaining == 0) EnemySpawner.WaveCompleted.Invoke();
         });
+
+        // find all the enemy prefab roots that are children of this game object
+        foreach (Transform child in transform)
+        {
+            if (child.tag == "Enemies")
+                Enemies.Add(child.GetComponent<ShrimpSpawner>());
+
+            if (child.tag == "Obstacles")
+                Obstacles.Add(child.GetComponent<ObstacleDelay>());
+        }
+
+        EnemiesRemaining = Enemies.Count;
+
+        // disable everything until the wave actually starts
+        Enemies.ForEach((enemy) => enemy.gameObject.SetActive(false));
+        Obstacles.ForEach((obstacle) => obstacle.gameObject.SetActive(false));
+    }
+
+    private void Spawn()
+    {
+        IEnumerator DelayShrimp(ShrimpSpawner shrimpSpawner)
+        {
+            yield return new WaitForSeconds(shrimpSpawner.DelayToSpawn);
+            shrimpSpawner.gameObject.SetActive(true);
+        }
+
+        Enemies.ForEach((enemy) => StartCoroutine(DelayShrimp(enemy)));
+
+        IEnumerator DelayObstacle(ObstacleDelay obstacleDelay)
+        {
+            yield return new WaitForSeconds(obstacleDelay.DelayToSpawn);
+            obstacleDelay.gameObject.SetActive(true);
+        }
+
+        Obstacles.ForEach((obstacle) => StartCoroutine(DelayObstacle(obstacle)));
     }
 
     void OnDisable()
@@ -51,20 +82,7 @@ public class WaveManager : MonoBehaviour
 
     void Start()
     {
-        // find all the enemy prefab roots that are children of this game object
-        foreach (Transform child in transform)
-        {
-            if (child.tag == "Enemies")
-                Enemies.Add(child.gameObject);
 
-            if (child.tag == "Obstacles")
-                Obstacles.Add(child.gameObject);
-        }
-
-        EnemiesRemaining = Enemies.Count;
-
-        Enemies.ForEach((enemy) => enemy.SetActive(false));
-        Obstacles.ForEach((obstacle) => obstacle.SetActive(false));
     }
 
     // Update is called once per frame
