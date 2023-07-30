@@ -18,6 +18,17 @@ public class MermaidHealth : CharacterHealth
     public AudioSource DieSound;
 
     /// <summary>
+    /// The amount of time (in seconds) the player is invincible after taking damage.
+    /// Matches the length of the Damage Taken animation.
+    /// </summary>
+    private float invincibilityDuration = 1.0f;
+
+    /// <summary>
+    /// The text time the player is vulnerable (not invincible)
+    /// </summary>
+    private float nextVulnerableTime = 0.0f;
+
+    /// <summary>
     /// Handles all the callbacks when the player dies
     /// </summary>
     public override void Die()
@@ -30,15 +41,21 @@ public class MermaidHealth : CharacterHealth
 
     public void TakeDamage(int damageValue, float source)
     {
-        // Only play hurt sound if mermaid will not die.
-        if (this.Health > damageValue)
+        float currentTime = Time.time;
+        if (currentTime > nextVulnerableTime)
         {
-            HurtSound.Play();
+            nextVulnerableTime = currentTime + invincibilityDuration;
+            // Only play hurt sound if mermaid will not die.
+            if (this.Health > damageValue)
+            {
+                HurtSound.Play();
+            }
+
+            base.TakeDamage(damageValue);
+            this.AnimationController.HandleDamage(source);
+
+            this.MermaidHUD.ChangePlayerHealth(-damageValue);
         }
 
-        base.TakeDamage(damageValue);
-        this.AnimationController.HandleDamage(source);
-
-        this.MermaidHUD.ChangePlayerHealth(-damageValue);
     }
 }
