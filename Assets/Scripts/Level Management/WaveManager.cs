@@ -41,16 +41,7 @@ public class WaveManager : MonoBehaviour
 
             if (EnemiesRemaining == 0) EnemySpawner.WaveCompleted.Invoke();
         });
-    }
 
-    void OnDisable()
-    {
-        Activate.RemoveAllListeners();
-        EnemyDown.RemoveAllListeners();
-    }
-
-    void Start()
-    {
         // find all the enemy prefab roots that are children of this game object
         foreach (Transform child in transform)
         {
@@ -65,6 +56,17 @@ public class WaveManager : MonoBehaviour
 
         Enemies.ForEach((enemy) => enemy.SetActive(false));
         Obstacles.ForEach((obstacle) => obstacle.SetActive(false));
+    }
+
+    void OnDisable()
+    {
+        Activate.RemoveAllListeners();
+        EnemyDown.RemoveAllListeners();
+    }
+
+    void Start()
+    {
+
     }
 
     // Update is called once per frame

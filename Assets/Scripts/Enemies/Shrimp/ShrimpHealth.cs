@@ -24,7 +24,7 @@ public class ShrimpHealth : CharacterHealth
         });
     }
 
-    private void Start()
+    private void OnEnable()
     {
         _shrimpAnimator = GetComponent<ShrimpAnimator>();
         _partOfWave = GetComponentInParent<WaveManager>();
