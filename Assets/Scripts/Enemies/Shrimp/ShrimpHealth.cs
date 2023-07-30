@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(ShrimpAnimator))]
@@ -15,10 +15,20 @@ public class ShrimpHealth : CharacterHealth
 
     private ShrimpAnimator _shrimpAnimator;
 
+    [Tooltip("Reference to the hurt sound effect")]
+    public AudioSource HurtSound;
+
+    [Tooltip("Reference to the die sound effect")]
+    public AudioSource DieSound;
+
+    [Tooltip("Reference to the power up sound effect")]
+    public AudioSource PowerUpSound;
+
     private void Awake()
     {
         PowerUp.AddListener(() =>
         {
+            PowerUpSound.Play();
             Heal(MaxHealth);
             _shrimpAnimator.HandlePower();
         });
@@ -38,7 +48,9 @@ public class ShrimpHealth : CharacterHealth
     public void TakeDamage(int damageValue, float damageSource)
     {
         if (damageValue < 0) Debug.LogWarning("Negative damage received!");
-
+        // Only play hurt sound if shrimp will not die.
+        if (this.Health > damageValue)
+            HurtSound.Play();
         base.TakeDamage(damageValue);
 
         _shrimpAnimator.HandleDamage(damageSource);
@@ -49,6 +61,9 @@ public class ShrimpHealth : CharacterHealth
     /// </summary>
     public override void Die()
     {
+        DieSound.Play();
+        // Turn off the collider so it doesn't soak extra hits and play extra sounds.
+        GetComponentInChildren<Collider2D>().enabled = false;
         _shrimpAnimator.HandleDeath();
     }
 
