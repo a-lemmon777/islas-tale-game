@@ -16,10 +16,20 @@ public class LevelStateMachine : AbstractFiniteStateMachine
     [Tooltip("Reference to the pause menu")]
     public PauseMenu PauseMenu;
 
+    [Tooltip("Reference to the mermaid status canvas")]
+    public GameObject MermaidHUDCanvas;
+
+    [Tooltip("Reference to the tutorial prefab root, disabled by default")]
+    public GameObject TutorialScreen;
+
+    [Tooltip("Whether to start the game with the tutorial")]
+    public bool StartWithTutorial;
+
     public enum LevelState
     {
         IN_BATTLE,
-        PAUSED
+        PAUSED,
+        IN_TUTORIAL
     }
 
     /// <summary>
@@ -29,16 +39,26 @@ public class LevelStateMachine : AbstractFiniteStateMachine
     {
         Init(LevelState.IN_BATTLE,
             AbstractState.Create<InBattleState, LevelState>(LevelState.IN_BATTLE, this),
-            AbstractState.Create<PausedState, LevelState>(LevelState.PAUSED, this)
+            AbstractState.Create<PausedState, LevelState>(LevelState.PAUSED, this),
+            AbstractState.Create<InTutorialState, LevelState>(LevelState.IN_TUTORIAL, this)
         );
     }
 
+    private void Start()
+    {
+        if (StartWithTutorial)
+            LevelEvents.OpenTutorial.Invoke();
+        else
+            LevelEvents.Start.Invoke();
+    }
 
     public class InBattleState : AbstractState
     {
+
         public InBattleState()
         {
             LevelEvents.Instance.Pause.AddListener(() => TransitionToState(LevelState.PAUSED));
+            LevelEvents.Instance.OpenTutorial.AddListener(() => TransitionToState(LevelState.IN_TUTORIAL));
         }
         public override void OnEnter()
         {
@@ -68,7 +88,32 @@ public class LevelStateMachine : AbstractFiniteStateMachine
         }
         public override void OnExit()
         {
+            Time.timeScale = 1;
             (this._parentStateMachine as LevelStateMachine).PauseMenu.gameObject.SetActive(false);
+        }
+    }
+
+    public class InTutorialState : AbstractState
+    {
+
+        public InTutorialState()
+        {
+            LevelEvents.Instance.CloseTutorial.AddListener(() => TransitionToState(LevelState.IN_BATTLE));
+        }
+
+        public override void OnEnter()
+        {
+            Time.timeScale = 0;
+            (this._parentStateMachine as LevelStateMachine).TutorialScreen.SetActive(true);
+            (this._parentStateMachine as LevelStateMachine).MermaidHUDCanvas.SetActive(false);
+        }
+
+        public override void OnExit()
+        {
+            Time.timeScale = 1;
+            (this._parentStateMachine as LevelStateMachine).TutorialScreen.SetActive(false);
+            (this._parentStateMachine as LevelStateMachine).MermaidHUDCanvas.SetActive(true);
+            LevelEvents.Instance.Start.Invoke();
         }
     }
 }
