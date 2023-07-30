@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 112739355087553340}
   - component: {fileID: 3102860731527864485}
   m_Layer: 9
-  m_Name: Left Barrel
+  m_Name: Center Barrel
   m_TagString: Barrels
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,7 +34,7 @@ Transform:
   - {fileID: 5948122990237861523}
   - {fileID: 7693002193248260188}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8701609323816087754
 SpriteRenderer:
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9fdeffe4b79ffb94cb257e364e7b2acc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a9805c1066c64eb48ad80eab3300c0b5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,7 +98,7 @@ Animator:
   m_GameObject: {fileID: 134316053057817930}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4209e0c90c1a7e7439ef400a2e94de5a, type: 2}
+  m_Controller: {fileID: 9100000, guid: ca009577c2d13fc4fbd4bd8e4ac3055c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -151,7 +151,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2989185877896024394}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.71, y: -0.5, z: 0.21790634}
+  m_LocalPosition: {x: -0.25, y: -0.5, z: 0.21790634}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -182,7 +182,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8212968090128677841}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.89, y: -3.7, z: 0}
+  m_LocalPosition: {x: 1.61, y: -3.38, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

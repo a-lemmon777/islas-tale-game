@@ -105,6 +105,6 @@ public class MermaidCombat : MonoBehaviour
         if (normalizedDirection == Vector2.zero)
             normalizedDirection.x = _lastHorizontalInput;
         GameObject starfish = Instantiate(StarfishPrefab, spawnLocation, Quaternion.identity);
-        starfish.GetComponent<StarfishController>().SetDirection(normalizedDirection);
+        starfish.GetComponentInChildren<StarfishController>().SetDirection(normalizedDirection);
     }
 }

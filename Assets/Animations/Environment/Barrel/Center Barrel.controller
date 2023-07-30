@@ -21,7 +21,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: dd850f711381e604f9c560209e04b26a, type: 2}
+  m_Motion: {fileID: 7400000, guid: 993e31f4cf179094db3caa7fe5958ffb, type: 2}
   m_Tag: 
   m_SpeedParameter: Speed Multiplier
   m_MirrorParameter: 
@@ -33,7 +33,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Left Barrel
+  m_Name: Center Barrel
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Speed Multiplier
@@ -41,13 +41,13 @@ AnimatorController:
     m_DefaultFloat: 0.25
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Wind Up Speed Multiplier
     m_Type: 1
     m_DefaultFloat: 0.5
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
