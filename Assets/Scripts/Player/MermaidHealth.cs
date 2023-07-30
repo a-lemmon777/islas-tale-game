@@ -22,6 +22,7 @@ public class MermaidHealth : CharacterHealth
     /// </summary>
     public override void Die()
     {
+        GameObject.Find("MusicManager").GetComponent<AudioSource>().Pause();
         DieSound.Play();
         this.AnimationController.HandleDeath();
     }
@@ -31,7 +32,6 @@ public class MermaidHealth : CharacterHealth
         // Only play hurt sound if mermaid will not die.
         if (this.Health > damageValue)
         {
-            HurtSound.time = 0.25f;
             HurtSound.Play();
         }
 
