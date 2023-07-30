@@ -16,12 +16,15 @@ public class ObstacleMover : MonoBehaviour
 
     private Rigidbody2D _rigidbody2D;
 
-    private void OnEnable()
+    private GameObject _parent;
+
+    private void Start()
     {
         this._rigidbody2D = GetComponent<Rigidbody2D>();
+        this._parent = GetComponentInParent<ObstacleDelay>().gameObject;
 
         _rigidbody2D.velocity = ((Vector2)Destination.position - _rigidbody2D.position).normalized * Speed;
 
-        Destroy(gameObject, LifeTime);
+        Destroy(_parent, LifeTime);
     }
 }
