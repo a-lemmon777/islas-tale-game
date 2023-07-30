@@ -20,6 +20,9 @@ public class MainMenu : MonoBehaviour
             case "Credits":
                 SceneManager.LoadScene("Credits");
                 break;
+            case "Exit":
+                Application.Quit();
+                break;
             default:
                 break;
         }
