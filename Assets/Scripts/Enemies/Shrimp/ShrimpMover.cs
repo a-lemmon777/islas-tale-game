@@ -20,6 +20,8 @@ public class ShrimpMover : MonoBehaviour
 
     private ShrimpHealth _shrimpHealth;
 
+    private MermaidMovement _mermaidMovement;
+
     /// <summary>
     /// Whether the shrimp has been powered up
     /// </summary>
@@ -31,20 +33,34 @@ public class ShrimpMover : MonoBehaviour
         this._shrimpAnimator = GetComponent<ShrimpAnimator>();
         this._shrimpHealth = GetComponent<ShrimpHealth>();
 
+        this._mermaidMovement = GameObject.Find("Player Mermaid").GetComponent<MermaidMovement>();
+
         _shrimpHealth.PowerUp.AddListener(() =>
         {
             _isPoweredUp = true;
-            KickInRandomDirection();
+            Destination.transform.position = _mermaidMovement.transform.position;
         });
+
+        GoToDestination();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (_isPoweredUp)
+        if (!_isPoweredUp)
+        {
             GoBounceAround();
-        else
-            GoToDestination();
+            return;
+        }
+
+        GoToDestination();
+    }
+
+    void Update()
+    {
+        // animations
+        if (_rigidbody2D.velocity.x < 0) this.transform.localScale = new Vector3(-1, 1, 1);
+        else this.transform.localScale = Vector3.one;
     }
 
     private void GoBounceAround()
@@ -79,16 +95,13 @@ public class ShrimpMover : MonoBehaviour
         // the shrimp arrived
         if (distanceLeft <= 0.05f) // proximity threshold, 0.05f makes the shrimp stop on the target
         {
-            _rigidbody2D.velocity = Vector2.zero;
-            return;
+            // change destination to follow the mermaid
+            Destination.transform.position = _mermaidMovement.transform.position;
         }
 
         _rigidbody2D.velocity =
             ((Vector2)Destination.position - _rigidbody2D.position).normalized * Speed
         ;
 
-        // animations
-        if (_rigidbody2D.velocity.x < 0) this.transform.localScale = new Vector3(-1, 1, 1);
-        else this.transform.localScale = Vector3.one;
     }
 }
