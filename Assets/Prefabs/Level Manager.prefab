@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5241170095639467349}
-  - component: {fileID: 2191217687271242700}
   - component: {fileID: 742844262322510207}
   - component: {fileID: 859644887296577181}
+  - component: {fileID: 197388204680536299}
   m_Layer: 0
   m_Name: Level Manager
   m_TagString: Untagged
@@ -34,21 +34,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2191217687271242700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1164234359984886205}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b57af9a389919f942a36989caada2469, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LevelEvents: {fileID: 11400000, guid: 94e19117b6be12c45ba686ff7fd887fd, type: 2}
-  PauseMenu: {fileID: 0}
-  PauseSound: {fileID: 859644887296577181}
 --- !u!114 &742844262322510207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,3 +149,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &197388204680536299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1164234359984886205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf0d2207a53e1524d99408830392ef44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LevelEvents: {fileID: 11400000, guid: 94e19117b6be12c45ba686ff7fd887fd, type: 2}
+  PauseMenu: {fileID: 0}
+  PauseSound: {fileID: 859644887296577181}
+  MermaidHUDCanvas: {fileID: 0}
+  TutorialScreen: {fileID: 0}
+  StartWithTutorial: 1
