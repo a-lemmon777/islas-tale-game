@@ -5,6 +5,8 @@ using UnityEngine.Events;
 [CreateAssetMenu(menuName = "Game/Level Events", fileName = "Level Events")]
 public class LevelEvents : ScriptableObject
 {
+    public UnityEvent Start;
+
     public UnityEvent Pause;
 
     public UnityEvent Resume;
@@ -12,6 +14,10 @@ public class LevelEvents : ScriptableObject
     public UnityEvent GameOver;
 
     public UnityEvent Victory;
+
+    public UnityEvent OpenTutorial;
+
+    public UnityEvent CloseTutorial;
 
     public static LevelEvents Instance;
 
@@ -28,5 +34,7 @@ public class LevelEvents : ScriptableObject
         Pause.RemoveAllListeners();
         Resume.RemoveAllListeners();
         GameOver.RemoveAllListeners();
+        Victory.RemoveAllListeners();
+        OpenTutorial.RemoveAllListeners();
     }
 }

@@ -36,6 +36,8 @@ public class EnemySpawner : MonoBehaviour
             CurrentWave++;
             WaveList[CurrentWave].Activate.Invoke();
         });
+
+        LevelEvents.Start.AddListener(() => StartWaves());
     }
 
     void OnDisable()
@@ -43,7 +45,7 @@ public class EnemySpawner : MonoBehaviour
         WaveCompleted.RemoveAllListeners();
     }
 
-    private void Start()
+    public void StartWaves()
     {
         StartCoroutine(ActivateFirstWave());
     }
