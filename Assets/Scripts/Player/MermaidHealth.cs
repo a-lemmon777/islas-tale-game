@@ -11,6 +11,9 @@ public class MermaidHealth : CharacterHealth
     [Tooltip("Reference to the player status UI script component")]
     public MermaidHUD MermaidHUD;
 
+    [Tooltip("Reference to the mermaid's mover")]
+    public MermaidMovement MermaidMovement;
+
     [Tooltip("Reference to the hurt sound effect")]
     public AudioSource HurtSound;
 
@@ -33,6 +36,7 @@ public class MermaidHealth : CharacterHealth
     /// </summary>
     public override void Die()
     {
+        MermaidMovement.IsDead = true;
         GameObject.Find("MusicManager").GetComponent<AudioSource>().Pause();
         DieSound.Play();
         GetComponent<Collider2D>().enabled = false;

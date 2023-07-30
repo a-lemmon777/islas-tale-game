@@ -119,6 +119,7 @@ MonoBehaviour:
   Health: 5
   AnimationController: {fileID: 3391367493163675675}
   MermaidHUD: {fileID: 0}
+  MermaidMovement: {fileID: -7131003749957975648}
   HurtSound: {fileID: 470455603385514977}
   DieSound: {fileID: 3380109466915703225}
 --- !u!114 &4783705638685626141
@@ -570,5 +571,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b808045892267b45b5bec0fa3117433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeToIdle: 2
   LevelEvents: {fileID: 11400000, guid: 94e19117b6be12c45ba686ff7fd887fd, type: 2}
