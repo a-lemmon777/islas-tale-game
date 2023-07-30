@@ -9187,11 +9187,11 @@ PrefabInstance:
     - target: {fileID: 742844262322510207, guid: ab476fce1c102924e87387b32e1236a8, type: 3}
       propertyPath: WaveList.Array.data[0]
       value: 
-      objectReference: {fileID: 979904689}
+      objectReference: {fileID: 1249043510}
     - target: {fileID: 742844262322510207, guid: ab476fce1c102924e87387b32e1236a8, type: 3}
       propertyPath: WaveList.Array.data[1]
       value: 
-      objectReference: {fileID: 1249043510}
+      objectReference: {fileID: 979904689}
     - target: {fileID: 742844262322510207, guid: ab476fce1c102924e87387b32e1236a8, type: 3}
       propertyPath: WaveList.Array.data[2]
       value: 
