@@ -17,6 +17,9 @@ public class MermaidCombat : MonoBehaviour
     [Tooltip("Starfish Prefab")]
     public GameObject StarfishPrefab;
 
+    [Tooltip("Reference to the throw sound effect")]
+    public AudioSource ThrowSound;
+
     private float _nextStarfishThrowTime = 0f;
     private Vector2 _attackDirection = Vector2.zero;
     private bool _rangedAttackInputActive = false;
@@ -95,6 +98,7 @@ public class MermaidCombat : MonoBehaviour
     /// <param name="normalizedDirection">The direction to throw the starfish.</param>
     public void ThrowStarfish(Vector2 normalizedDirection)
     {
+        ThrowSound.Play();
         _rangedAttackQueued = false;
         Vector3 throwReleaseOffset = (Vector3)(normalizedDirection * ProjectileReleaseOffset * transform.localScale.x);
         Vector3 spawnLocation = transform.position + throwReleaseOffset;
