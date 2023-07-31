@@ -217,6 +217,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2505809553450446473, guid: 82f528ab00481224592542f5ce8eb5f2, type: 3}
+      propertyPath: Spawner
+      value: 
+      objectReference: {fileID: 2085839231}
+    - target: {fileID: 2505809553450446473, guid: 82f528ab00481224592542f5ce8eb5f2, type: 3}
       propertyPath: PlayerHealth
       value: 
       objectReference: {fileID: 1475871932}

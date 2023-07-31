@@ -1,6 +1,7 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -24,10 +25,14 @@ public class PauseMenu : MonoBehaviour
                 Debug.Log("Clicked options");
                 break;
 
+            case "MainMenu":
+                LevelEvents.Resume.Invoke();
+                SceneManager.LoadScene("MainMenu");
+                break;
+
             case "Exit":
                 Application.Quit();
                 break;
-
             default:
 
                 break;

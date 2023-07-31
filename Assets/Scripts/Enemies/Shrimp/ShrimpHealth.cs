@@ -58,10 +58,11 @@ public class ShrimpHealth : CharacterHealth
         if (this.Health > damageValue)
         {
             HurtSound.Play();
-            _shrimpAnimator.HandleDamage(damageSource);
         }
 
+
         base.TakeDamage(damageValue);
+        _shrimpAnimator.HandleDamage(damageSource);
 
 
     }
