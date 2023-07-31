@@ -23,11 +23,11 @@ Attack using the space bar, move using WASD keyboard controls, and aim using you
 ![fight](https://img.itch.zone/aW1hZ2UvMjE2MTMzMS8xMjk3ODMxNC5wbmc=/original/Qd8sMx.png)
 
 # Made during Shell we Jam 2023 
-Isla is a new action adventure developed by a small yet mighty team within the span of one month:
+Isla's Tale is a new action game developed by a small yet mighty team within the span of one month:
 
 _Song Yang: Lead Developer and Game Design_
 
-_Aaron Lemon: Game Play Engineer_
+_Aaron Lemmon: Gameplay Engineer_
 
 _Eurie Oh: Lead Artist and Designer_
 
