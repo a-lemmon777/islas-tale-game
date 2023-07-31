@@ -4551,6 +4551,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1855983673046780361, guid: 8b279cb6d3ba7ff4ea869e4106d6d55e, type: 3}
   m_PrefabInstance: {fileID: 3169937700425928879}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1249043510 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5753215055521245301, guid: 8b279cb6d3ba7ff4ea869e4106d6d55e, type: 3}
+  m_PrefabInstance: {fileID: 3169937700425928879}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c98f3e8927e82704585026a3d30aaeb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1276094647
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7076,12 +7087,12 @@ PrefabInstance:
       objectReference: {fileID: 12475596}
     - target: {fileID: 742844262322510207, guid: ab476fce1c102924e87387b32e1236a8, type: 3}
       propertyPath: WaveList.Array.size
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 742844262322510207, guid: ab476fce1c102924e87387b32e1236a8, type: 3}
       propertyPath: WaveList.Array.data[0]
       value: 
-      objectReference: {fileID: 727041986}
+      objectReference: {fileID: 1249043510}
     - target: {fileID: 742844262322510207, guid: ab476fce1c102924e87387b32e1236a8, type: 3}
       propertyPath: WaveList.Array.data[1]
       value: 
@@ -7094,6 +7105,10 @@ PrefabInstance:
       propertyPath: WaveList.Array.data[3]
       value: 
       objectReference: {fileID: 1144828266}
+    - target: {fileID: 742844262322510207, guid: ab476fce1c102924e87387b32e1236a8, type: 3}
+      propertyPath: WaveList.Array.data[4]
+      value: 
+      objectReference: {fileID: 727041986}
     - target: {fileID: 1164234359984886205, guid: ab476fce1c102924e87387b32e1236a8, type: 3}
       propertyPath: m_Name
       value: Level Manager
