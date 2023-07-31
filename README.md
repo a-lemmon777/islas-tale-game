@@ -20,6 +20,8 @@ Isla’s green health bar is in the upper left corner. The game is over when the
 
 Attack using the space bar, move using WASD keyboard controls, and aim using your mouse or IJKL keyboard controls.
 
+![fight](https://img.itch.zone/aW1hZ2UvMjE2MTMzMS8xMjk3ODMxNC5wbmc=/original/Qd8sMx.png)
+
 # Made during Shell we Jam 2023 
 Isla is a new action adventure developed by a small yet mighty team within the span of one month:
 
@@ -40,5 +42,3 @@ If you enjoyed this game, make sure to rate it and tag us on LinkedIn with a scr
 Download and play the demo now!
 
 Sound effects and music were obtained from https://www.zapsplat.com. 
-
-![victory](https://img.itch.zone/aW1hZ2UvMjE2MTMzMS8xMjk2ODkxNi5wbmc=/original/VEu41T.png)
