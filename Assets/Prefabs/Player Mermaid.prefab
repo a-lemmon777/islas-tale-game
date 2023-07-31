@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 1900668392877973715}
   m_Layer: 3
   m_Name: Player Mermaid
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,6 +119,7 @@ MonoBehaviour:
   Health: 5
   AnimationController: {fileID: 3391367493163675675}
   MermaidHUD: {fileID: 0}
+  MermaidMovement: {fileID: -7131003749957975648}
   HurtSound: {fileID: 470455603385514977}
   DieSound: {fileID: 3380109466915703225}
 --- !u!114 &4783705638685626141
@@ -523,8 +524,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -259850051
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6d6fb30b3785706498776590a1b8d4cb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -570,5 +571,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b808045892267b45b5bec0fa3117433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeToIdle: 2
   LevelEvents: {fileID: 11400000, guid: 94e19117b6be12c45ba686ff7fd887fd, type: 2}

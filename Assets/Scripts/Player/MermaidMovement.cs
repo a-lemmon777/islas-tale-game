@@ -5,10 +5,13 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(MermaidInput))]
+[RequireComponent(typeof(CharacterHealth))]
 public class MermaidMovement : MonoBehaviour
 {
     [Tooltip("Speed in units per second")]
     public float Speed = 10f;
+
+    public bool IsDead = false;
 
     private Collider2D _collider;
     private Rigidbody2D _rigidbody2D;
@@ -40,7 +43,7 @@ public class MermaidMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_moveDirection != Vector2.zero)
+        if (_moveDirection != Vector2.zero && !IsDead)
             Move(_moveDirection);
     }
 
