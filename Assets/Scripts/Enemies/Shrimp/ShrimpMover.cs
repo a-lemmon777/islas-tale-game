@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,6 +13,8 @@ public class ShrimpMover : MonoBehaviour
 
     [Tooltip("Speed when powered up in units per second")]
     public float PoweredSpeed;
+
+    public bool IsDead = false;
 
     private Rigidbody2D _rigidbody2D;
 
@@ -47,13 +49,16 @@ public class ShrimpMover : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!_isPoweredUp)
+        if (!IsDead)
         {
-            GoBounceAround();
-            return;
-        }
+            if (!_isPoweredUp)
+            {
+                GoBounceAround();
+                return;
+            }
 
-        GoToDestination();
+            GoToDestination();
+        }
     }
 
     void Update()
