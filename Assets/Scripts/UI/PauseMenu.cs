@@ -1,6 +1,7 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -25,7 +26,8 @@ public class PauseMenu : MonoBehaviour
                 break;
 
             case "Exit":
-                Application.Quit();
+                LevelEvents.Resume.Invoke();
+                SceneManager.LoadScene("MainMenu");
                 break;
 
             default:
