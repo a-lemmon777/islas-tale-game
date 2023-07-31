@@ -39,6 +39,5 @@ public class ShrimpAnimator : MonoBehaviour
     public void HandlePower()
     {
         _animator.SetTrigger("Power Up");
-        _animator.SetBool("Alive", true);
     }
 }
