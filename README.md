@@ -9,10 +9,10 @@ Descend into the murky depths of the ocean and fight waves of underwater sea cre
 
 Poisoned by radiation and toxic garbage barrels dumped into the ocean, enemy creatures have mutated and it’s up to Isla to purify her subjects to return home. 
 
-A new experience in a familiar style
+## A new experience in a familiar style
 Enjoy an atmospheric cuphead-inspired game design starring Princess of Atlantis determined to defend her kingdom by purifying mutated creatures. Grab a cup of tea, curl up with your laptop, and enjoy this adorable adventure! 
 
-Expect to be challenged
+## Expect to be challenged
 This is a cute yet stimulating gaming experience that challenges you to fight wave upon wave of enemies..are you up for the challenge? 
 
 # How to Play
@@ -23,15 +23,15 @@ Attack using the space bar, move using WASD keyboard controls, and aim using you
 # Made during Shell we Jam 2023 
 Isla is a new action adventure developed by a small yet mighty team within the span of one month:
 
-Song Yang: Lead Developer and Game Design
+_Song Yang: Lead Developer and Game Design_
 
-Aaron Lemon: Game Play Engineer
+_Aaron Lemon: Game Play Engineer_
 
-Eurie Oh: Lead Artist and Designer
+_Eurie Oh: Lead Artist and Designer_
 
-Anthony Lu: UI/UX Designer
+_Anthony Lu: UI/UX Designer_
 
-Pooja Sandhu: Sound Design and Marketing Lead
+_Pooja Sandhu: Sound Design and Marketing Lead_
 
 Connect with us on LinkedIn, and share your experience! 
 
