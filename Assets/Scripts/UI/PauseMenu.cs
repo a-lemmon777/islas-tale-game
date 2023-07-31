@@ -25,11 +25,14 @@ public class PauseMenu : MonoBehaviour
                 Debug.Log("Clicked options");
                 break;
 
-            case "Exit":
+            case "MainMenu":
                 LevelEvents.Resume.Invoke();
                 SceneManager.LoadScene("MainMenu");
                 break;
 
+            case "Exit":
+                Application.Quit();
+                break;
             default:
 
                 break;
