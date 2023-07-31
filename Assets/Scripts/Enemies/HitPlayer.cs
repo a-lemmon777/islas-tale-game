@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,33 +12,32 @@ public class HitPlayer : MonoBehaviour
     [Tooltip("How much HP is deducted per damage event")]
     public int DamageValue;
 
-    [Tooltip("How long till another damage event in seconds")]
-    public float Cooldown;
-
-    /// <summary>
-    /// The next time in seconds that the damage event can occur again
-    /// </summary>
-    private float _nextHitTime = float.NegativeInfinity;
-
     private void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if (Time.time < _nextHitTime)
-            return;
+        CheckForPlayerCollision(collision);
+    }
 
-        var health = other.gameObject.GetComponentInParent<MermaidHealth>();
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        CheckForPlayerCollision(collision);
+    }
 
-        if (health == null) return;
+    private void CheckForPlayerCollision(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            var health = collision.gameObject.GetComponentInParent<MermaidHealth>();
 
-        health.TakeDamage(damageValue: DamageValue,
-            (_rigidbody2D.position - other.GetContact(0).point).x
-        );
+            if (health == null) return;
 
-        _nextHitTime = Time.time + Cooldown;
-
+            health.TakeDamage(damageValue: DamageValue,
+                (_rigidbody2D.position - collision.GetContact(0).point).x
+            );
+        }
     }
 }

@@ -10,15 +10,11 @@ public class MermaidAnimator : MonoBehaviour
     private MermaidInput _mermaidInput;
     private MermaidCombat _mermaidCombat;
 
-    [Tooltip("How long it takes to start the neutral idling in seconds")]
-    public float TimeToIdle = 2;
-
     [Tooltip("Scriptable object for level events")]
     public LevelEvents LevelEvents;
 
-    private float _nextIdleTime = 0;
-    private Vector2 _aimDirection = Vector2.zero;
     private Vector2 _moveDirection = Vector2.zero;
+    private float _idleDirection = 0f; // The direction to face when idling
 
     void Awake()
     {
@@ -41,8 +37,7 @@ public class MermaidAnimator : MonoBehaviour
 
     private void OnAim(Vector2 direction)
     {
-        if (direction !=  Vector2.zero)
-            _aimDirection = direction;
+        _idleDirection = direction.x;
     }
 
     private void OnMove(Vector2 direction)
@@ -52,40 +47,15 @@ public class MermaidAnimator : MonoBehaviour
 
     private void Update()
     {
-        //HandleMovement(_aimDirection);
         _animator.SetBool("Is Swimming", _moveDirection != Vector2.zero);
         _animator.SetFloat("Horizontal Velocity", _moveDirection.x);
-        _animator.SetFloat("Aim X", _aimDirection.x);
-        _animator.SetFloat("Aim Y", _aimDirection.y);
+        _animator.SetFloat("Idle Direction", _idleDirection);
     }
 
-    /// <summary>
-    /// Triggers the animation parameters for swimming and idle animations.
-    /// The parameter is "Horizontal Velocity" which represents the velocity of the mermaid
-    /// received through player input.
-    /// </summary>
-    /// <param name="normalizedInput">An instantaneous frame movement delta</param>
-    public void HandleMovement(Vector2 normalizedInput)
+    public void HandleAttack(Vector2 normalizedInput)
     {
-        _animator.SetFloat("Horizontal Velocity", normalizedInput.x);
-
-        // transition to idle
-        if (normalizedInput != Vector2.zero)
-        {
-            _nextIdleTime = Time.time + TimeToIdle;
-        }
-
-        if (Time.time > _nextIdleTime)
-        {
-            _animator.SetTrigger("Idle");
-            return;
-        }
-
-        _animator.ResetTrigger("Idle");
-    }
-
-    public void HandleAttack()
-    {
+        _animator.SetFloat("Aim X", normalizedInput.x);
+        _animator.SetFloat("Aim Y", normalizedInput.y);
         _animator.SetTrigger("Attack");
     }
 
@@ -111,8 +81,44 @@ public class MermaidAnimator : MonoBehaviour
         _animator.SetBool("Is Dying", true);
     }
 
-    public void ThrowStarfish()
+    // Handlers called by Animation Clips
+    public void ThrowStarfishUp()
     {
-        _mermaidCombat.ThrowStarfish();
+        _mermaidCombat.ThrowStarfish(Vector2.up);
+    }
+
+    public void ThrowStarfishUpRight()
+    {
+        _mermaidCombat.ThrowStarfish(new Vector2(1, 1));
+    }
+
+    public void ThrowStarfishRight()
+    {
+        _mermaidCombat.ThrowStarfish(Vector2.right);
+    }
+
+    public void ThrowStarfishDownRight()
+    {
+        _mermaidCombat.ThrowStarfish(new Vector2(1, -1));
+    }
+
+    public void ThrowStarfishDown()
+    {
+        _mermaidCombat.ThrowStarfish(Vector2.down);
+    }
+
+    public void ThrowStarfishDownLeft()
+    {
+        _mermaidCombat.ThrowStarfish(new Vector2(-1, -1));
+    }
+
+    public void ThrowStarfishLeft()
+    {
+        _mermaidCombat.ThrowStarfish(Vector2.left);
+    }
+
+    public void ThrowStarfishUpLeft()
+    {
+        _mermaidCombat.ThrowStarfish(new Vector2(-1, 1));
     }
 }

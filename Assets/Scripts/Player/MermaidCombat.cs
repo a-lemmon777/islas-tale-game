@@ -80,15 +80,15 @@ public class MermaidCombat : MonoBehaviour
     {
         if (Time.time >= _nextStarfishThrowTime && (_rangedAttackInputActive || _rangedAttackQueued))
         {
-            _mermaidAnimator.HandleAttack();
+            Vector2 normalizedDirection = _attackDirection;
+            if (_attackDirection == Vector2.zero)
+            {
+                normalizedDirection.x = _lastHorizontalInput;
+            }
+            _mermaidAnimator.HandleAttack(normalizedDirection);
             _nextStarfishThrowTime = Time.time + StarfishCooldown;
         }
 
-    }
-
-    public void ThrowStarfish()
-    {
-        ThrowStarfish(_attackDirection);
     }
 
     /// <summary>
@@ -102,8 +102,6 @@ public class MermaidCombat : MonoBehaviour
         _rangedAttackQueued = false;
         Vector3 throwReleaseOffset = (Vector3)(normalizedDirection * ProjectileReleaseOffset * transform.localScale.x);
         Vector3 spawnLocation = transform.position + throwReleaseOffset;
-        if (normalizedDirection == Vector2.zero)
-            normalizedDirection.x = _lastHorizontalInput;
         GameObject starfish = Instantiate(StarfishPrefab, spawnLocation, Quaternion.identity);
         starfish.GetComponentInChildren<StarfishController>().SetDirection(normalizedDirection);
     }
