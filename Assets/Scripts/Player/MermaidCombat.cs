@@ -103,6 +103,6 @@ public class MermaidCombat : MonoBehaviour
         Vector3 throwReleaseOffset = (Vector3)(normalizedDirection * ProjectileReleaseOffset * transform.localScale.x);
         Vector3 spawnLocation = transform.position + throwReleaseOffset;
         GameObject starfish = Instantiate(StarfishPrefab, spawnLocation, Quaternion.identity);
-        starfish.GetComponent<StarfishController>().SetDirection(normalizedDirection);
+        starfish.GetComponentInChildren<StarfishController>().SetDirection(normalizedDirection);
     }
 }

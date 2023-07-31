@@ -24,6 +24,9 @@ public class WaveManager : MonoBehaviour
     [Tooltip("List of obstacles")]
     public List<ObstacleDelay> Obstacles = new List<ObstacleDelay>();
 
+    [Tooltip("List of barrels")]
+    public List<ToxicBarrel> Barrels = new List<ToxicBarrel>();
+
     [Tooltip("How many enemies are left")]
     public int EnemiesRemaining;
 
@@ -35,7 +38,11 @@ public class WaveManager : MonoBehaviour
         {
             EnemiesRemaining--;
 
-            if (EnemiesRemaining == 0) EnemySpawner.WaveCompleted.Invoke();
+            if (EnemiesRemaining == 0)
+            {
+                Barrels.ForEach((barrel) => barrel.Deactivate.Invoke());
+                EnemySpawner.WaveCompleted.Invoke();
+            }
         });
 
         // find all the enemy prefab roots that are children of this game object
@@ -46,6 +53,9 @@ public class WaveManager : MonoBehaviour
 
             if (child.tag == "Obstacles")
                 Obstacles.Add(child.GetComponent<ObstacleDelay>());
+
+            if (child.tag == "Barrels")
+                Barrels.Add(child.GetComponent<ToxicBarrel>());
         }
 
         EnemiesRemaining = Enemies.Count;
@@ -53,8 +63,12 @@ public class WaveManager : MonoBehaviour
         // disable everything until the wave actually starts
         Enemies.ForEach((enemy) => enemy.gameObject.SetActive(false));
         Obstacles.ForEach((obstacle) => obstacle.gameObject.SetActive(false));
+        Barrels.ForEach((barrel) => barrel.gameObject.SetActive(false));
     }
 
+    /// <summary>
+    /// Properly spawns the enemies and obstacles after their designated delay
+    /// </summary>
     private void Spawn()
     {
         IEnumerator DelayShrimp(ShrimpSpawner shrimpSpawner)
@@ -72,6 +86,14 @@ public class WaveManager : MonoBehaviour
         }
 
         Obstacles.ForEach((obstacle) => StartCoroutine(DelayObstacle(obstacle)));
+
+        IEnumerator DelayBarrel(ToxicBarrel toxicBarrel)
+        {
+            yield return new WaitForSeconds(toxicBarrel.DelayToSpawn);
+            toxicBarrel.gameObject.SetActive(true);
+        }
+
+        Barrels.ForEach((barrel) => StartCoroutine(DelayBarrel(barrel)));
     }
 
     void OnDisable()
@@ -80,13 +102,4 @@ public class WaveManager : MonoBehaviour
         EnemyDown.RemoveAllListeners();
     }
 
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
 }

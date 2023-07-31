@@ -27,6 +27,9 @@ public class EnemySpawner : MonoBehaviour
                 Destroy(star.gameObject);
             }
 
+            // destroy all the barrels
+            WaveList[CurrentWave].Barrels.ForEach((barrel) => Destroy(barrel.gameObject));
+
             if (CurrentWave == WaveList.Count - 1)
             {
                 LevelEvents.Victory.Invoke();
@@ -34,10 +37,10 @@ public class EnemySpawner : MonoBehaviour
             }
 
             CurrentWave++;
-            WaveList[CurrentWave].Activate.Invoke();
+            ReadyWave(CurrentWave);
         });
 
-        LevelEvents.Start.AddListener(() => StartWaves());
+        LevelEvents.Start.AddListener(() => ReadyWave(0));
     }
 
     void OnDisable()
@@ -45,14 +48,14 @@ public class EnemySpawner : MonoBehaviour
         WaveCompleted.RemoveAllListeners();
     }
 
-    public void StartWaves()
+    private void ReadyWave(int waveIndex)
     {
-        StartCoroutine(ActivateFirstWave());
+        StartCoroutine(ActivateWave(waveIndex));
     }
 
-    private IEnumerator ActivateFirstWave()
+    private IEnumerator ActivateWave(int waveIndex)
     {
         yield return new WaitForSeconds(2f);
-        WaveList[0].Activate.Invoke();
+        WaveList[waveIndex].Activate.Invoke();
     }
 }
