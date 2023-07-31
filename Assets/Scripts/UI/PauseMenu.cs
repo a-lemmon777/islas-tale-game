@@ -6,7 +6,7 @@ public class PauseMenu : MonoBehaviour
 {
 
     [Tooltip("Reference to the level manager state machine")]
-    public LevelStateMachine LevelStateMachine;
+    public LevelEvents LevelEvents;
 
     /// <summary>
     /// Click listeners to menu options
@@ -17,7 +17,7 @@ public class PauseMenu : MonoBehaviour
         switch (buttonName)
         {
             case "Resume":
-                LevelStateMachine.LevelEvents.Resume.Invoke();
+                LevelEvents.Resume.Invoke();
                 break;
 
             case "Options":

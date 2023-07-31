@@ -24,8 +24,14 @@ public class ShrimpHealth : CharacterHealth
     [Tooltip("Reference to the power up sound effect")]
     public AudioSource PowerUpSound;
 
+    [Tooltip("Reference to the shrimp mover")]
+    public ShrimpMover Mover;
+
+    private Rigidbody2D _rigidbody2D;
+
     private void Awake()
     {
+        this._rigidbody2D = GetComponent<Rigidbody2D>();
         PowerUp.AddListener(() =>
         {
             PowerUpSound.Play();
@@ -50,10 +56,14 @@ public class ShrimpHealth : CharacterHealth
         if (damageValue < 0) Debug.LogWarning("Negative damage received!");
         // Only play hurt sound if shrimp will not die.
         if (this.Health > damageValue)
+        {
             HurtSound.Play();
+            _shrimpAnimator.HandleDamage(damageSource);
+        }
+
         base.TakeDamage(damageValue);
 
-        _shrimpAnimator.HandleDamage(damageSource);
+
     }
 
     /// <summary>
@@ -61,6 +71,9 @@ public class ShrimpHealth : CharacterHealth
     /// </summary>
     public override void Die()
     {
+        Mover.IsDead = true;
+        // Slow down a lot, but keep current orientation.
+        _rigidbody2D.velocity *= 0.01f;
         DieSound.Play();
         // Turn off the collider so it doesn't soak extra hits and play extra sounds.
         GetComponentInChildren<Collider2D>().enabled = false;
