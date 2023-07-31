@@ -1,7 +1,8 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class MermaidHUD : MonoBehaviour
 {
@@ -22,6 +23,9 @@ public class MermaidHUD : MonoBehaviour
     [Tooltip("Mermaid health component")]
     public MermaidHealth PlayerHealth;
 
+    [Tooltip("A reference to the enemy spawner")]
+    public EnemySpawner Spawner;
+
     [Tooltip("Sprite on disk for full health image")]
     public Sprite FullHealth;
 
@@ -37,9 +41,14 @@ public class MermaidHUD : MonoBehaviour
     [Tooltip("Rect transform position of the hp bar")]
     public Vector2 HPPos;
 
+    [Tooltip("Text of the wave counter")]
+    public TMPro.TMP_Text WaveCounterText;
+
     public RectTransform Status;
 
     public RectTransform HPBar;
+
+    private int _waveNumber = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -49,6 +58,25 @@ public class MermaidHUD : MonoBehaviour
 
         this.Status.anchoredPosition = StatusPos;
         this.HPBar.anchoredPosition = HPPos;
+
+        Spawner.WaveCompleted.AddListener(UpdateWaveCounter);
+        SetWaveCounterText(_waveNumber, Spawner.WaveList.Count);
+    }
+
+    private void OnDestroy()
+    {
+        Spawner.WaveCompleted.RemoveListener(UpdateWaveCounter);
+    }
+
+    public void UpdateWaveCounter()
+    {
+        ++_waveNumber;
+        SetWaveCounterText(_waveNumber, Spawner.WaveList.Count);
+    }
+
+    private void SetWaveCounterText(int currentWave, int totalWaves)
+    {
+        WaveCounterText.text = "WAVE: " + currentWave + " / " + totalWaves;
     }
 
     /// <summary>

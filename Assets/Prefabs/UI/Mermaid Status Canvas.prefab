@@ -112,8 +112,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -174.58496, y: -65}
-  m_SizeDelta: {x: 300, y: 108}
+  m_AnchoredPosition: {x: -300, y: -65}
+  m_SizeDelta: {x: 500, y: 108}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &515509006824879809
 CanvasRenderer:
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'WAVE: X'
+  m_text: 'WAVE: X / Y'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5624b04722d75df4ea2f390f1a3c0b4a, type: 2}
   m_sharedMaterial: {fileID: 5696952482498208169, guid: 5624b04722d75df4ea2f390f1a3c0b4a, type: 2}
@@ -177,7 +177,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 4
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -588,10 +588,12 @@ MonoBehaviour:
   MermaidStatus: {fileID: 5402315917769373172}
   HealthBar: {fileID: 4505941750018758068}
   PlayerHealth: {fileID: 0}
+  Spawner: {fileID: 0}
   FullHealth: {fileID: 21300000, guid: 50dccd13dc90cb14c94212f124fed07e, type: 3}
   HalfHealth: {fileID: 21300000, guid: ec9c28b0fd292f642a8a27d08da48b99, type: 3}
   LowHealth: {fileID: 21300000, guid: be6dce2602e17904091749977754aaf5, type: 3}
   StatusPos: {x: 165.56, y: -106.3}
   HPPos: {x: 452, y: -65}
+  WaveCounterText: {fileID: 1718088106549280863}
   Status: {fileID: 336998947131884064}
   HPBar: {fileID: 204501113787231915}
