@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -74,7 +74,10 @@ public class WaveManager : MonoBehaviour
         IEnumerator DelayShrimp(ShrimpSpawner shrimpSpawner)
         {
             yield return new WaitForSeconds(shrimpSpawner.DelayToSpawn);
-            shrimpSpawner.gameObject.SetActive(true);
+            if (shrimpSpawner != null)
+            {
+                shrimpSpawner.gameObject.SetActive(true);
+            }
         }
 
         Enemies.ForEach((enemy) => StartCoroutine(DelayShrimp(enemy)));
@@ -82,7 +85,10 @@ public class WaveManager : MonoBehaviour
         IEnumerator DelayObstacle(ObstacleDelay obstacleDelay)
         {
             yield return new WaitForSeconds(obstacleDelay.DelayToSpawn);
-            obstacleDelay.gameObject.SetActive(true);
+            if (obstacleDelay != null)
+            {
+                obstacleDelay.gameObject.SetActive(true);
+            }
         }
 
         Obstacles.ForEach((obstacle) => StartCoroutine(DelayObstacle(obstacle)));
@@ -90,7 +96,10 @@ public class WaveManager : MonoBehaviour
         IEnumerator DelayBarrel(ToxicBarrel toxicBarrel)
         {
             yield return new WaitForSeconds(toxicBarrel.DelayToSpawn);
-            toxicBarrel.gameObject.SetActive(true);
+            if (toxicBarrel != null)
+            {
+                toxicBarrel.gameObject.SetActive(true);
+            }
         }
 
         Barrels.ForEach((barrel) => StartCoroutine(DelayBarrel(barrel)));

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -30,16 +30,11 @@ public class ToxicBarrel : MonoBehaviour
 
     void Awake()
     {
+        _animator = GetComponent<Animator>();
         Deactivate.AddListener(() =>
         {
             _animator.SetTrigger("Deactivate");
         });
-    }
-
-    void Start()
-    {
-        _animator = GetComponent<Animator>();
-
         PassiveLinearEmission();
     }
 
