@@ -2,7 +2,7 @@
 A classic action game set in the dark depths of the ocean, play as Isla, a mermaid princess exploring the depths of the sea with the magical power of the star. 
 ⭐️
 
-![front page](https://img.itch.zone/aW1nLzEyOTc4MjI0LnBuZw==/original/E5HWa9.png)
+![front page](https://img.itch.zone/aW1nLzEzMDAxNzczLnBuZw==/original/IPuB77.png)
 
 # ABOUT
 Descend into the murky depths of the ocean and fight waves of underwater sea creatures!
