@@ -2,6 +2,8 @@
 A classic action game set in the dark depths of the ocean, play as Isla, a mermaid princess exploring the depths of the sea with the magical power of the star. 
 ⭐️
 
+[Play on itch.io!](https://aaronlemmon.itch.io/islas-tale)
+
 ![front page](https://img.itch.zone/aW1nLzEzMDAxNzczLnBuZw==/original/IPuB77.png)
 
 # ABOUT
